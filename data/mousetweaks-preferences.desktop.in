@@ -1,0 +1,12 @@
+[Desktop Entry]
+_Name=Mousetweaks Preferences
+_Comment=Accessibility Mouse Enhancements
+Exec=mousetweaks-preferences
+Icon=gnome-dev-mouse-optical
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Accessibility;
+OnlyShowIn=GNOME;
+Encoding=UTF-8
+

@@ -1,0 +1,270 @@
+# French language file for mousetweaks.
+# Copyright (C) 2007 Gerd Kohlberger <lowfi@chello.at>
+# This file is distributed under the same license as the PACKAGE package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mousetweaks-0.3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-09-02 21:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Francesco Fumanti <francesco.fumanti@gmx.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/dwell-click-applet.glade.h:1
+msgid ""
+"Applet to select different dwell-click types.\n"
+"Part of MouseTweaks"
+msgstr ""
+"Applet pour choisir le clic à éffectuer.\n"
+"Composant de MouseTweaks"
+
+#: ../data/dwell-click-applet.glade.h:3 ../data/ctw.glade.h:1
+msgid "Click Type Window"
+msgstr "Fenêtre de Choix du clic"
+
+#: ../data/dwell-click-applet.glade.h:4 ../data/mousetweaks.glade.h:4
+#: ../data/ctw.glade.h:2
+msgid "Double Click"
+msgstr "Double clic"
+
+#: ../data/dwell-click-applet.glade.h:5 ../data/mousetweaks.glade.h:5
+#: ../data/ctw.glade.h:3
+msgid "Drag Click"
+msgstr "Glisser déposer"
+
+#: ../data/dwell-click-applet.glade.h:6 ../data/mousetweaks.glade.h:18
+#: ../data/ctw.glade.h:4
+msgid "Right Click"
+msgstr "Clic droit"
+
+#: ../data/dwell-click-applet.glade.h:7 ../data/mousetweaks.glade.h:20
+#: ../data/ctw.glade.h:8
+msgid "Single Click"
+msgstr "Clic simple"
+
+#: ../data/mousetweaks.glade.h:1
+msgid "<b>Ignore Pointer Movement</b>"
+msgstr "<b>Ignore les mouvements de la souris</b>"
+
+#: ../data/mousetweaks.glade.h:2
+msgid "Delay"
+msgstr "Décalage"
+
+#: ../data/mousetweaks.glade.h:3
+msgid "Delay Click"
+msgstr "Clic contextuel gauche"
+
+#: ../data/mousetweaks.glade.h:6 ../data/DwellClick_Factory.server.in.in.h:1
+msgid "Dwell Click"
+msgstr "Clic automatique"
+
+#: ../data/mousetweaks.glade.h:7
+msgid "Dwelling with Click Type Window"
+msgstr "Clic automatique avec Fenêtre de Choix"
+
+#: ../data/mousetweaks.glade.h:8
+msgid "Dwelling with Mouse Gestures"
+msgstr "Clic automatique par gestes de la souris"
+
+#: ../data/mousetweaks.glade.h:9
+msgid "Enable"
+msgstr "Activer"
+
+#: ../data/mousetweaks.glade.h:10
+msgid "General"
+msgstr "Général"
+
+#: ../data/mousetweaks.glade.h:11
+msgid "Mouse enhancements for the Gnome Desktop"
+msgstr "Fonctionalités additionelles pour la souris sous Gnome"
+
+#: ../data/mousetweaks.glade.h:12
+#: ../data/mousetweaks-preferences.desktop.in.h:2
+msgid "MouseTweaks Preferences"
+msgstr "Préférences de MouseTweaks"
+
+#: ../data/mousetweaks.glade.h:13
+msgid ""
+"Move Left\n"
+"Move Right\n"
+"Move Up\n"
+"Move Down\n"
+"Disabled"
+msgstr ""
+"Déplacer à gauche\n"
+"Déplacer à droite\n"
+"Déplacer vers le haut\n"
+"Déplacer vers le bas\n"
+"Désactivé"
+
+#: ../data/mousetweaks.glade.h:19 ../src/mt-main.c:527
+#, fuzzy
+msgid "Show click type window"
+msgstr "Afficher la Fenêtre de Choix du clic"
+
+#: ../data/mousetweaks.glade.h:21
+msgid "Threshold"
+msgstr "Seuil"
+
+#: ../data/mousetweaks.glade.h:22
+msgid "Time"
+msgstr "Durée"
+
+#: ../data/mousetweaks.glade.h:23 ../data/pointer-capture-applet.glade.h:11
+msgid "pixels"
+msgstr "pixels"
+
+#: ../data/mousetweaks.glade.h:24
+msgid "seconds"
+msgstr "secondes"
+
+#: ../data/ctw.glade.h:5
+msgid "Show Icons and Text"
+msgstr "Afficher les icônes et le texte"
+
+#: ../data/ctw.glade.h:6
+msgid "Show Icons only"
+msgstr "Afficher seulement les icônes"
+
+#: ../data/ctw.glade.h:7
+msgid "Show Text only"
+msgstr "Afficher seulement le texte"
+
+#: ../data/pointer-capture-applet.glade.h:1
+msgid "<b>Applet Size</b>"
+msgstr "<b>Taille de l'applet</b>"
+
+#: ../data/pointer-capture-applet.glade.h:2
+msgid "<b>Capture Modifier</b>"
+msgstr "<b>Modificateur pour la capture</b>"
+
+#: ../data/pointer-capture-applet.glade.h:3
+msgid "<b>Release Modifier</b>"
+msgstr "<b>Modificateur pour la libération</b>"
+
+#: ../data/pointer-capture-applet.glade.h:4
+msgid ""
+"Area to freeze the mouse pointer on the panel.\n"
+"Part of MouseTweaks"
+msgstr ""
+"Aire sur le panneau pour la capture de la souris.\n"
+"Composant de MouseTweaks"
+
+#: ../data/pointer-capture-applet.glade.h:6
+msgid "Button"
+msgstr "Bouton"
+
+#: ../data/pointer-capture-applet.glade.h:7
+msgid "Modifier Key"
+msgstr "Touche modificateur"
+
+#: ../data/pointer-capture-applet.glade.h:8
+msgid "Mouse Button (1 = Left, 2 = Middle, 3 = Right)"
+msgstr "Bouton de la souris (1 = Gauche, 2 = Milieu, 3 = Droit)"
+
+#: ../data/pointer-capture-applet.glade.h:9
+msgid "Pointer Capture Preferences"
+msgstr "Préférences pour la capture de la souris"
+
+#: ../data/pointer-capture-applet.glade.h:10
+msgid "Width"
+msgstr "Largeur"
+
+#: ../data/mousetweaks.desktop.in.h:1
+#: ../data/mousetweaks-preferences.desktop.in.h:1
+msgid "Mouse Enhancements"
+msgstr "Extensions pour la souris"
+
+#: ../data/mousetweaks.desktop.in.h:2
+msgid "MouseTweaks"
+msgstr "MouseTweaks"
+
+#: ../data/DwellClick_Factory.server.in.in.h:2
+msgid "Select dwelling click-types"
+msgstr "Choix du type du clic automatique"
+
+#: ../data/PointerCapture_Factory.server.in.in.h:1
+msgid "Area to lock the pointer"
+msgstr "Aire de capture de la souris"
+
+#: ../data/PointerCapture_Factory.server.in.in.h:2
+msgid "Pointer Capture"
+msgstr "Capture de la souris"
+
+#: ../src/mt-main.c:523
+msgid "Enable mousetweaks feature"
+msgstr ""
+
+#: ../src/mt-main.c:525
+msgid "Use dwell mode"
+msgstr ""
+
+#: ../src/mt-main.c:529
+msgid "Window x position"
+msgstr ""
+
+#: ../src/mt-main.c:531
+msgid "Window y position"
+msgstr ""
+
+#: ../src/mt-main.c:533
+msgid "Shutdown mousetweaks"
+msgstr ""
+
+#: ../src/mt-main.c:591
+msgid "Assistive Technologies not enabled"
+msgstr "Aides Techniques non activées"
+
+#: ../src/mt-main.c:592
+msgid "MouseTweaks requires Assistive Technologies."
+msgstr "MouseTweaks nécessite les Aides Techniques."
+
+#: ../src/mt-main.c:600 ../src/preferences.c:230 ../src/mt-ctw.c:162
+msgid "Internal Error"
+msgstr "Erreur interne"
+
+#: ../src/mt-main.c:601
+msgid "Couldn't allocate memory."
+msgstr "Echec lors de la réservation de mémoire."
+
+#: ../src/preferences.c:80
+msgid "Enable Delay Click"
+msgstr "Activer le clic contextuel gauche"
+
+#: ../src/preferences.c:81
+msgid "Dwell Click is currently active and will be disabled."
+msgstr "Le clic automatique est activé et sera désactivé."
+
+#: ../src/preferences.c:117
+msgid "Enable Dwell Click"
+msgstr "Activer le clic automatique"
+
+#: ../src/preferences.c:118
+msgid "Delay Click is currently active and will be disabled."
+msgstr "Le clic contextuel gauche est activé et sera désactivé."
+
+#: ../src/preferences.c:231 ../src/mt-ctw.c:163
+#, fuzzy
+msgid "Couldn't load glade interface file."
+msgstr "Echec lors du chargement du fichier glade."
+
+#: ../src/pointer-capture-applet.c:194
+msgid "Locked"
+msgstr "Verrouillé"
+
+#. l10n: the first letter of 'Locked'
+#: ../src/pointer-capture-applet.c:197
+msgid "L"
+msgstr "V"
+
+#: ../src/mt-dbus.c:123
+msgid "DBUS Error"
+msgstr ""
+
+#: ../src/mt-dbus.c:124
+msgid "Not primary name owner."
+msgstr ""
