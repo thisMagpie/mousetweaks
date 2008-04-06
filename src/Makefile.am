@@ -35,7 +35,7 @@ mousetweaks_SOURCES =		\
 	mt-timer.c		\
 	mt-timer.h
 
-mousetweaks_LDFLAGS =		\
+mousetweaks_LDADD =		\
 	$(GLADE_LIBS)		\
 	$(CSPI_LIBS)		\
 	$(DBUS_LIBS)		\
@@ -47,9 +47,9 @@ dwell_click_applet_SOURCES = \
 	mt-common.c	     \
 	mt-common.h
 
-dwell_click_applet_LDFLAGS = \
-	$(GLADE_LIBS)	     \
-	$(PANEL_LIBS)	     \
+dwell_click_applet_LDADD = \
+	$(GLADE_LIBS)	   \
+	$(PANEL_LIBS)	   \
 	$(DBUS_LIBS)
 
 pointer_capture_applet_SOURCES = \
@@ -57,6 +57,6 @@ pointer_capture_applet_SOURCES = \
 	mt-common.c		 \
 	mt-common.h
 
-pointer_capture_applet_LDFLAGS = \
-	$(GLADE_LIBS)		 \
+pointer_capture_applet_LDADD = \
+	$(GLADE_LIBS)	       \
 	$(PANEL_LIBS)
