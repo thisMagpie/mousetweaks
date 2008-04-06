@@ -1,5 +1,9 @@
 2008-04-06 Gerd Kohlberger <gerdk@svn.gnome.org>
 
+	* NEWS: Prepare for 2.22.1 release.
+
+2008-04-06 Gerd Kohlberger <gerdk@svn.gnome.org>
+
 	* src/mt-main.c: Don't send right-clicks too fast. This helps
 	to avoid running into active pointer grabs. (eg. gnome-panel)
 	

@@ -1,5 +1,23 @@
+Version 2.22.1
+--------------
+
+Misc improvements/fixes:
+
+	* Don't send right-clicks too fast. Avoids some problems
+	  with secondary clicks on the gnome-panel.
+
+Bug fixes:
+
+	#525032: Make sure '-Wl,--as-needed' works.
+
+New and updated translations:
+
+	- [cs] Lucas Lommer
+	- [nn] Eskild Hustvedt
+
+
 Version 2.22.0
----------------
+--------------
 
 New and updated translations:
 
