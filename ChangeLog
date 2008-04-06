@@ -1,5 +1,12 @@
 2008-04-06 Gerd Kohlberger <gerdk@svn.gnome.org>
 
+	* configure.ac:
+	* README:
+
+	Post release version bump: 2.22.2
+
+2008-04-06 Gerd Kohlberger <gerdk@svn.gnome.org>
+
 	* NEWS: Prepare for 2.22.1 release.
 
 2008-04-06 Gerd Kohlberger <gerdk@svn.gnome.org>
