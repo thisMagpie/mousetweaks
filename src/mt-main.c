@@ -215,13 +215,24 @@ dwell_time_elapsed (MtTimer *timer, gpointer data)
     }
 }
 
+static gboolean
+right_click_timeout (gpointer data)
+{
+    MTClosure *mt = (MTClosure *) data;
+
+    SPI_generateMouseEvent (mt->pointer_x, mt->pointer_y, "b3c");
+
+    return FALSE;
+}
+
 static void
 delay_time_elapsed (MtTimer *timer, gpointer data)
 {
     MTClosure *mt = (MTClosure *) data;
 
     SPI_generateMouseEvent (0, 0, "b1r");
-    SPI_generateMouseEvent (mt->pointer_x, mt->pointer_y, "b3c");
+    SPI_generateMouseEvent (mt->pointer_x, mt->pointer_y, "abs");
+    g_timeout_add (100, right_click_timeout, data);
 }
 
 /* at-spi callbacks */
