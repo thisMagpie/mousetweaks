@@ -1,6 +1,6 @@
 AC_PREREQ(2.57)
 
-AC_INIT([mousetweaks], [2.22.2], [http://bugzilla.gnome.org/enter_bug.cgi?product=mousetweaks], [mousetweaks])
+AC_INIT([mousetweaks], [2.22.3], [http://bugzilla.gnome.org/enter_bug.cgi?product=mousetweaks], [mousetweaks])
 AC_CONFIG_SRCDIR([src])
 AC_CONFIG_HEADER([config.h])
 AC_PREFIX_DEFAULT([/usr])
