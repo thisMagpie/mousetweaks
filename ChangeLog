@@ -1,3 +1,7 @@
+2008-05-26 Francesco Fumanti <frfumanti@svn.gnome.org>
+
+	* NEWS: Prepare 2.22.2 release.
+
 2008-04-06 Gerd Kohlberger <gerdk@svn.gnome.org>
 
 	* configure.ac:
