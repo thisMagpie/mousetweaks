@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousetweaks trunk\n"
+"Project-Id-Version: mousetweaks gnome-2-24\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-04 22:41+0900\n"
-"PO-Revision-Date: 2008-09-04 22:39+0900\n"
+"POT-Creation-Date: 2008-09-27 00:09+0900\n"
+"PO-Revision-Date: 2008-09-27 00:09+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <takeshi.aihana@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -36,16 +36,21 @@ msgstr "ダブル・クリック"
 msgid "Drag Click"
 msgstr "ドラッグ"
 
-#: ../data/dwell-click-applet.glade.h:6 ../src/dwell-click-applet.c:112
+#: ../data/dwell-click-applet.glade.h:6 ../data/mousetweaks.schemas.in.h:12
+#: ../src/mt-main.c:821
+msgid "Enable dwell click"
+msgstr "自動クリックの機能を有効にするかどうか"
+
+#: ../data/dwell-click-applet.glade.h:7 ../src/dwell-click-applet.c:112
 #: ../src/dwell-click-applet.c:642
 msgid "On"
 msgstr "オン"
 
-#: ../data/dwell-click-applet.glade.h:7 ../data/ctw.glade.h:4
+#: ../data/dwell-click-applet.glade.h:8 ../data/ctw.glade.h:4
 msgid "Right Click"
 msgstr "右クリック"
 
-#: ../data/dwell-click-applet.glade.h:8 ../data/ctw.glade.h:8
+#: ../data/dwell-click-applet.glade.h:9 ../data/ctw.glade.h:8
 msgid "Single Click"
 msgstr "シングル・クリック"
 
@@ -62,6 +67,10 @@ msgid "<b>Size of Capture Area</b>"
 msgstr "<b>捕獲エリアの大きさ</b>"
 
 #: ../data/pointer-capture-applet.glade.h:4
+msgid "A_lt"
+msgstr "Alt(_L)"
+
+#: ../data/pointer-capture-applet.glade.h:5
 msgid ""
 "Area to freeze the mouse pointer on the panel.\n"
 "Part of Mousetweaks"
@@ -69,31 +78,51 @@ msgstr ""
 "マウスのポインタを捕獲してロックするエリアです\n"
 "(MouseTweaks の一部です)。"
 
-#: ../data/pointer-capture-applet.glade.h:6
+#: ../data/pointer-capture-applet.glade.h:7
+msgid "C_trl"
+msgstr "Ctrl(_T)"
+
+#: ../data/pointer-capture-applet.glade.h:8
+msgid "Ct_rl"
+msgstr "Ctrl(_R)"
+
+#: ../data/pointer-capture-applet.glade.h:9
 msgid "Modifier:"
 msgstr "修飾キー:"
 
-#: ../data/pointer-capture-applet.glade.h:7
+#: ../data/pointer-capture-applet.glade.h:10
 msgid "Mouse _button:"
 msgstr "使用するボタン(_B):"
 
-#: ../data/pointer-capture-applet.glade.h:8
+#: ../data/pointer-capture-applet.glade.h:11
 msgid "Mouse b_utton:"
 msgstr "使用するボタン(_U):"
 
-#: ../data/pointer-capture-applet.glade.h:9
+#: ../data/pointer-capture-applet.glade.h:12
 msgid "Pointer Capture Preferences"
 msgstr "ポインタ捕獲の設定"
 
-#: ../data/pointer-capture-applet.glade.h:10
+#: ../data/pointer-capture-applet.glade.h:13
+msgid "S_hift"
+msgstr "Shift(_H)"
+
+#: ../data/pointer-capture-applet.glade.h:14
 msgid "Selecting Button 0 will capture the pointer immediately"
 msgstr "ボタン０を選択すると直ちにポインタを捕獲してロックします"
 
-#: ../data/pointer-capture-applet.glade.h:11
+#: ../data/pointer-capture-applet.glade.h:15
+msgid "Sh_ift"
+msgstr "Shift(_I)"
+
+#: ../data/pointer-capture-applet.glade.h:16
+msgid "_Alt"
+msgstr "Alt(_A)"
+
+#: ../data/pointer-capture-applet.glade.h:17
 msgid "_Width:"
 msgstr "幅(_W):"
 
-#: ../data/pointer-capture-applet.glade.h:12
+#: ../data/pointer-capture-applet.glade.h:18
 msgid "pixels"
 msgstr "ピクセル"
 
@@ -211,15 +240,11 @@ msgstr ""
 msgid "Dwell click time"
 msgstr "自動クリックとみなすまでの時間"
 
-#: ../data/mousetweaks.schemas.in.h:12 ../src/mt-main.c:819
-msgid "Enable dwell click"
-msgstr "自動クリックの機能を有効にするかどうか"
-
 #: ../data/mousetweaks.schemas.in.h:13
 msgid "Enable secondary click"
 msgstr "第二のクリックを有効にするかどうか"
 
-#: ../data/mousetweaks.schemas.in.h:14 ../src/mt-main.c:821
+#: ../data/mousetweaks.schemas.in.h:14 ../src/mt-main.c:823
 msgid "Enable simulated secondary click"
 msgstr "第二のクリックを模擬するかどうかです。"
 
@@ -247,7 +272,7 @@ msgstr "ポインタ移動のしきい値"
 msgid "Secondary click time"
 msgstr "第二のクリックとみなすまでの時間"
 
-#: ../data/mousetweaks.schemas.in.h:21 ../src/mt-main.c:829
+#: ../data/mousetweaks.schemas.in.h:21 ../src/mt-main.c:831
 msgid "Show click type window"
 msgstr "自動クリックの種類を選択するウィンドウを表示するかどうか"
 
@@ -321,11 +346,11 @@ msgstr "捕獲エリアの大きさ"
 msgid "Width of the capture area in pixels"
 msgstr "パネルに配置する捕獲エリアの幅 (ピクセル単位) です。"
 
-#: ../src/mt-main.c:720
+#: ../src/mt-main.c:722
 msgid "Assistive Technology Support Is Not Enabled"
 msgstr "支援技術が有効になっていません"
 
-#: ../src/mt-main.c:721
+#: ../src/mt-main.c:723
 msgid ""
 "Mousetweaks requires assistive technologies to be enabled in your session.\n"
 "\n"
@@ -338,39 +363,39 @@ msgstr ""
 "支援技術を有効にしてセッションを再起動する場合は \"有効にしてログアウト\" ボ"
 "タンを押下して下さい。"
 
-#: ../src/mt-main.c:823
+#: ../src/mt-main.c:825
 msgid "Time to wait before a dwell click"
 msgstr "自動クリックするまでの時間を指定する"
 
-#: ../src/mt-main.c:825
+#: ../src/mt-main.c:827
 msgid "Time to wait before a simulated secondary click"
 msgstr "第二ボタンのクリックを模擬するまでの時間を指定する"
 
-#: ../src/mt-main.c:827
+#: ../src/mt-main.c:829
 msgid "Dwell mode to use"
 msgstr "自動クリックを決定する方法を指定する"
 
-#: ../src/mt-main.c:831
+#: ../src/mt-main.c:833
 msgid "Window x position"
 msgstr "選択ウィンドウのＸ座標を指定する"
 
-#: ../src/mt-main.c:833
+#: ../src/mt-main.c:835
 msgid "Window y position"
 msgstr "選択ウィンドウのＹ座標を指定する"
 
-#: ../src/mt-main.c:835
+#: ../src/mt-main.c:837
 msgid "Ignore small pointer movements"
 msgstr "小規模なポインタの移動を無視する"
 
-#: ../src/mt-main.c:837
+#: ../src/mt-main.c:839
 msgid "Show elapsed time as cursor overlay"
 msgstr "カーソルがオーバーレイしている時の経過時間を表示する"
 
-#: ../src/mt-main.c:839
+#: ../src/mt-main.c:841
 msgid "Shut down mousetweaks"
 msgstr "MouseTweaks デーモンを終了する"
 
-#: ../src/mt-main.c:847
+#: ../src/mt-main.c:849
 msgid "- GNOME mousetweaks daemon"
 msgstr "- GNOME の MouseTweaks デーモン"
 
