@@ -1,5 +1,9 @@
 2008-10-20 Francesco Fumanti <frfumanti@svn.gnome.org>
 
+	* branches/gnome-2-24/NEWS: prepare for 2.24.1 release.
+
+2008-10-20 Francesco Fumanti <frfumanti@svn.gnome.org>
+
 	* configure.ac:
 	* README:
 
