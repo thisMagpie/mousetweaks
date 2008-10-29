@@ -1,13 +1,18 @@
+2008-10-29  Gerd Kohlberger  <gerdk@svn.gnome.org>
+
+	* src/mt-main.c:(accessibility_enabled): Remove check for GNOME
+	a11y gconf key. Fixes startup in GDM.
+
 2008-10-20 Francesco Fumanti <frfumanti@svn.gnome.org>
 
-	* branches/gnome-2-24/configure.ac:
-	* branches/gnome-2-24/README:
+	* configure.ac:
+	* README:
 
 	Post release version bump: 2.24.2
 
 2008-10-20 Francesco Fumanti <frfumanti@svn.gnome.org>
 
-	* branches/gnome-2-24/NEWS: prepare for 2.24.1 release.
+	* NEWS: prepare for 2.24.1 release.
 
 2008-10-20 Francesco Fumanti <frfumanti@svn.gnome.org>
 
