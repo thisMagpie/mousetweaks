@@ -1,5 +1,12 @@
 2008-11-23 Francesco Fumanti <frfumanti@svn.gnome.org>
 
+	* configure.ac:
+	* README:
+
+	Post release version bump: 2.24.3
+
+2008-11-23 Francesco Fumanti <frfumanti@svn.gnome.org>
+
 	* NEWS: prepare for 2.24.2 release.
 
 2008-10-29  Gerd Kohlberger  <gerdk@svn.gnome.org>
