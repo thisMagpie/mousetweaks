@@ -1,3 +1,15 @@
+Version 2.24.2
+---------------
+
+Misc improvements/fixes:
+
+	* src/mt-main.c:(accessibility_enabled): Remove check for GNOME
+	a11y gconf key. Fixes startup in GDM.
+
+New and updated translations:
+
+	- [cs] Adrian Guniš, #547480
+
 Version 2.24.1
 ---------------
 
