@@ -1,3 +1,18 @@
+Version 2.24.3
+---------------
+
+Misc improvements/fixes:
+
+	* src/mt-main.c: Add missing <locale.h>. Bug #567483.
+    * src/mt-main.c: Use N_() instead of _() for command-line
+	   options. Bug #567197.
+	* src/mt-main.c: Make sure drag-clicks also work if both Dwell
+	  Click and Simulated Secondary Click are enabled. Bug #562212.
+
+New and updated translations:
+
+	- [et] Ivar Smolin
+
 Version 2.24.2
 ---------------
 
