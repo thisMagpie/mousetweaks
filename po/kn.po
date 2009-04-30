@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mousetweaks.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=mousetweaks&component=general\n"
 "POT-Creation-Date: 2009-03-02 20:46+0000\n"
-"PO-Revision-Date: 2009-04-09 17:23+0530\n"
+"PO-Revision-Date: 2009-04-29 23:24+0530\n"
 "Last-Translator: Shankar Prasad <svenkate@redhat.com>\n"
 "Language-Team: Kannada <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -200,6 +200,9 @@ msgid ""
 "area. Valid values are \"1\" for left button, \"2\" for middle button, and "
 "\"3\" for right button."
 msgstr ""
+"ಸೂಚಕವನ್ನು ಸೆರೆ ಹಿಡಿಯಲಾದ ಜಾಗದಿಂದ ಬಿಡುಗಡೆಗೊಳಿಸಲು ಈ ಮೌಸ್‌ ಗುಂಡಿಯನ್ನು ಒತ್ತಬೇಕು. ಮಾನ್ಯವಾದ "
+"ಮೌಲ್ಯಗಳು ಎಡಗುಂಡಿಗೆ \"1\" ಆಗಿರುತ್ತದೆ, ನಡುವಿನ ಗುಂಡಿಗೆ \"2\" ಆಗಿರುತ್ತದೆ, ಹಾಗು ಬಲ ಗುಂಡಿಗೆ \"3\" "
+"ಆಗಿರುತ್ತದೆ."
 
 #: ../data/pointer-capture-applet.schemas.in.h:11
 msgid ""
@@ -208,6 +211,9 @@ msgid ""
 "needed, \"1\" for left button, \"2\" for middle button, and \"3\" for right "
 "button."
 msgstr ""
+"ಸೂಚಕವನ್ನು ಸೆರೆ ಹಿಡಿಯಲು ಸೆರೆ ಹಿಡಿಯಬೇಕಿರುವ ಜಾಗದಲ್ಲಿ ಸೂಚಕವು ಇದ್ದಾಗ ಈ ಮೌಸ್‌ ಗುಂಡಿಯನ್ನು ಒತ್ತಬೇಕು. ಮಾನ್ಯವಾದ "
+"ಮೌಲ್ಯಗಳೆಂದರೆ ಯಾವುದೆ ಗುಂಡಿಯೂ ಬೇಡವಾಗಿದ್ದರೆ \"0\" ಆಗಿರುತ್ತದೆ, ಎಡಗುಂಡಿಗೆ \"1\" ಆಗಿರುತ್ತದೆ, ನಡುವಿನ ಗುಂಡಿಗೆ \"2\" "
+"ಆಗಿರುತ್ತದೆ, ಹಾಗು ಬಲ ಗುಂಡಿಗೆ \"3\" ಆಗಿರುತ್ತದೆ."
 
 #: ../data/pointer-capture-applet.schemas.in.h:12
 msgid ""
@@ -216,12 +222,17 @@ msgid ""
 "button is set in the \"capture_button\" key, then the Alt key must be "
 "pressed while the mouse button is pressed."
 msgstr ""
+"ಸೂಚಕವನ್ನು ಸೆರೆ ಹಿಡಿಯಲು ಸೆರೆ ಹಿಡಿಯಬೇಕಿರುವ ಜಾಗದಲ್ಲಿ ಅದು ಇದ್ದಾಗ Alt ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕೆ. ಇದು "
+"true ಆದಲ್ಲಿ, ಹಾಗು ಮೌಸ್‌ನ ಗುಂಡಿಯನ್ನು \"capture_button\" ಕೀಲಿಗೆ ಹೊಂದಿಸಿದಲ್ಲಿ, ಮೌಸ್‌ "
+"ಗುಂಡಿಯನ್ನು ಒತ್ತಿದಾಗ Alt ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕು."
 
 #: ../data/pointer-capture-applet.schemas.in.h:13
 msgid ""
 "Whether the Alt key must be pressed with the mouse button set in "
 "\"release_button\" for the pointer to be released from the capture area."
 msgstr ""
+"ಸೆರೆ ಹಿಡಿಯಲಾದ ಜಾಗದಿಂದ ಸೂಚಕವನ್ನು ಬಿಡುಗಡೆಗೊಳಿಸಲು \"release_button\" ಗೆ "
+"ಹೊಂದಿಸಿಲಾದ ಮೌಸ್‌ ಗುಂಡಿಯೊಂದಿಗೆ Alt ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕು."
 
 #: ../data/pointer-capture-applet.schemas.in.h:14
 msgid ""
@@ -230,12 +241,17 @@ msgid ""
 "button is set in the \"capture_button\" key, then the Ctrl key must be "
 "pressed while the mouse button is pressed."
 msgstr ""
+"ಸೂಚಕವನ್ನು ಸೆರೆ ಹಿಡಿಯಲು ಸೆರೆ ಹಿಡಿಯಬೇಕಿರುವ ಜಾಗದಲ್ಲಿ ಅದು ಇದ್ದಾಗ Ctrl ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕೆ. ಇದು "
+"true ಆದಲ್ಲಿ, ಹಾಗು ಮೌಸ್‌ನ ಗುಂಡಿಯನ್ನು \"capture_button\" ಕೀಲಿಗೆ ಹೊಂದಿಸಿದಲ್ಲಿ, ಮೌಸ್‌ "
+"ಗುಂಡಿಯನ್ನು ಒತ್ತಿದಾಗ Ctrl ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕು."
 
 #: ../data/pointer-capture-applet.schemas.in.h:15
 msgid ""
 "Whether the Ctrl key must be pressed with the mouse button set in "
 "\"release_button\" for the pointer to be released from the capture area."
 msgstr ""
+"ಸೆರೆ ಹಿಡಿಯಲಾದ ಜಾಗದಿಂದ ಸೂಚಕವನ್ನು ಬಿಡುಗಡೆಗೊಳಿಸಲು \"release_button\" ಗೆ "
+"ಹೊಂದಿಸಿಲಾದ ಮೌಸ್‌ ಗುಂಡಿಯೊಂದಿಗೆ Ctrl ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕು."
 
 #: ../data/pointer-capture-applet.schemas.in.h:16
 msgid ""
@@ -244,12 +260,17 @@ msgid ""
 "button is set in the \"capture_button\" key, then the Shift key must be "
 "pressed while the mouse button is pressed."
 msgstr ""
+"ಸೂಚಕವನ್ನು ಸೆರೆ ಹಿಡಿಯಲು ಸೆರೆ ಹಿಡಿಯಬೇಕಿರುವ ಜಾಗದಲ್ಲಿ ಅದು ಇದ್ದಾಗ Shift ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕೆ. ಇದು "
+"true ಆದಲ್ಲಿ, ಹಾಗು ಮೌಸ್‌ನ ಗುಂಡಿಯನ್ನು \"capture_button\" ಕೀಲಿಗೆ ಹೊಂದಿಸಿದಲ್ಲಿ, ಮೌಸ್‌ "
+"ಗುಂಡಿಯನ್ನು ಒತ್ತಿದಾಗ Shift ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕು."
 
 #: ../data/pointer-capture-applet.schemas.in.h:17
 msgid ""
 "Whether the Shift key must be pressed with the mouse button set in "
 "\"release_button\" for the pointer to be released from the capture area."
 msgstr ""
+"ಸೆರೆ ಹಿಡಿಯಲಾದ ಜಾಗದಿಂದ ಸೂಚಕವನ್ನು ಬಿಡುಗಡೆಗೊಳಿಸಲು \"release_button\" ಗೆ "
+"ಹೊಂದಿಸಿಲಾದ ಮೌಸ್‌ ಗುಂಡಿಯೊಂದಿಗೆ Shift ಕೀಲಿಯನ್ನು ಒತ್ತಬೇಕು."
 
 #: ../data/pointer-capture-applet.schemas.in.h:18
 msgid "Width of the capture area in pixels."
@@ -266,6 +287,10 @@ msgid ""
 "To enable support for assistive technologies and restart your session, press "
 "\"Enable and Log Out\"."
 msgstr ""
+"Mousetweaks ಗಾಗಿ ನಿಮ್ಮ ಅಧಿವೇಶನದಲ್ಲಿ ಸಹಾಯಕ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ಶಕ್ತಗೊಳಿಸಬೇಕಾಗುತ್ತದೆ.\n"
+"\n"
+"ಸಹಾಯಕ ತಂತ್ರಜ್ಞಾನಗಳಿಗಾಗಿ ಬೆಂಬಲವನ್ನು ಶಕ್ತಗೊಳಿಸಲು ಹಾಗು ನಿಮ್ಮ ಅಧಿವೇಶನವನ್ನು ಮರಳಿ ಆರಂಭಿಸಲು,"
+"\"ಶಕ್ತಗೊಳಿಸು ಹಾಗು ನಿರ್ಗಮಿಸು\"(Enable and Log Out) ಅನ್ನು ಒತ್ತಿ."
 
 #: ../src/mt-main.c:829
 msgid "Time to wait before a dwell click"
