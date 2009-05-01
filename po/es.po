@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: mousetweaks.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=mousetweaks&component=general\n"
-"POT-Creation-Date: 2009-02-10 20:03+0000\n"
-"PO-Revision-Date: 2009-02-14 17:55+0100\n"
+"POT-Creation-Date: 2009-04-17 10:35+0000\n"
+"PO-Revision-Date: 2009-05-01 14:40+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgstr "Ay_uda"
 
 #: ../data/DwellClick.xml.h:3 ../data/PointerCapture.xml.h:3
 msgid "_Preferences"
-msgstr "_Preferencias"
+msgstr "Prefere_ncias"
 
 #: ../data/mousetweaks.schemas.in.h:1
 msgid "Animate cursor"
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Dwell click time"
 msgstr "Tiempo de la pulsación al posarse"
 
-#: ../data/mousetweaks.schemas.in.h:12 ../src/mt-main.c:824
+#: ../data/mousetweaks.schemas.in.h:12 ../src/mt-main.c:825
 msgid "Enable dwell click"
 msgstr "Activar la pulsación al posarse"
 
@@ -119,7 +119,7 @@ msgstr "Activar la pulsación al posarse"
 msgid "Enable secondary click"
 msgstr "Activar la pulsación secundaria"
 
-#: ../data/mousetweaks.schemas.in.h:14 ../src/mt-main.c:826
+#: ../data/mousetweaks.schemas.in.h:14 ../src/mt-main.c:827
 msgid "Enable simulated secondary click"
 msgstr "Activar la pulsación secundaria simulada"
 
@@ -147,7 +147,7 @@ msgstr "Umbral de movimiento"
 msgid "Secondary click time"
 msgstr "Tiempo de la pulsación secundaria"
 
-#: ../data/mousetweaks.schemas.in.h:21 ../src/mt-main.c:834
+#: ../data/mousetweaks.schemas.in.h:21 ../src/mt-main.c:835
 msgid "Show click type window"
 msgstr "Mostrar la ventana de tipo de pulsación"
 
@@ -290,11 +290,11 @@ msgstr ""
 msgid "Width of the capture area in pixels."
 msgstr "Ancho del área de captura en píxeles."
 
-#: ../src/mt-main.c:720
+#: ../src/mt-main.c:721
 msgid "Assistive Technology Support is not Enabled"
 msgstr "El soporte para tecnologías de asistencia no está activado"
 
-#: ../src/mt-main.c:721
+#: ../src/mt-main.c:722
 msgid ""
 "Mousetweaks requires assistive technologies to be enabled in your session.\n"
 "\n"
@@ -307,39 +307,39 @@ msgstr ""
 "Para activar el soporte para las tecnologías de asistencia y reiniciar su "
 "sesión, pulse «Activar y salir de la sesión»."
 
-#: ../src/mt-main.c:828
+#: ../src/mt-main.c:829
 msgid "Time to wait before a dwell click"
 msgstr "Tiempo que esperar antes de una pulsación al posarse"
 
-#: ../src/mt-main.c:830
+#: ../src/mt-main.c:831
 msgid "Time to wait before a simulated secondary click"
 msgstr "Tiempo que esperar antes de una pulsación secundaria simulada"
 
-#: ../src/mt-main.c:832
+#: ../src/mt-main.c:833
 msgid "Dwell mode to use"
 msgstr "Modo pulsación al posarse que usar"
 
-#: ../src/mt-main.c:836
+#: ../src/mt-main.c:837
 msgid "Window x position"
 msgstr "Posición x de la ventana"
 
-#: ../src/mt-main.c:838
+#: ../src/mt-main.c:839
 msgid "Window y position"
 msgstr "Ventana y posición"
 
-#: ../src/mt-main.c:840
+#: ../src/mt-main.c:841
 msgid "Ignore small pointer movements"
 msgstr "Ignorar los movimientos pequeños del puntero"
 
-#: ../src/mt-main.c:842
+#: ../src/mt-main.c:843
 msgid "Show elapsed time as cursor overlay"
 msgstr "Mostrar el tiempo transcurrido superpuesto al cursor"
 
-#: ../src/mt-main.c:844
+#: ../src/mt-main.c:845
 msgid "Shut down mousetweaks"
 msgstr "Apagar los ajustes finos del ratón"
 
-#: ../src/mt-main.c:853
+#: ../src/mt-main.c:854
 msgid "- GNOME mousetweaks daemon"
 msgstr " - Demonio de los ajustes finos del ratón de GNOME"
 
