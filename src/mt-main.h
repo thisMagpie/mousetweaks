@@ -42,6 +42,7 @@ struct _MTClosure {
     Display *xtst_display;
     gint     n_screens;
 
+    gboolean left_handed;
     gboolean dwell_drag_started;
     gboolean dwell_gesture_started;
     gboolean override_cursor;
