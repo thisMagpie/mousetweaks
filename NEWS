@@ -1,3 +1,44 @@
+Version 2.26.2
+---------------
+
+Misc improvements/fixes:
+
+    * Fix dwell click for left-handed mouse orientation, bgo #582319
+    * Create m4 directory during autogen.sh, bgo #579397
+
+New and updated translations:
+
+    - [ar] Usama Akkad
+    - [el] Fotis Tsamis
+    - [en_GB] Jen Ockwel
+    - [es] Jorge González
+    - [fr] Bruno Brouard, Claude Paroz
+    - [gl] Suso Baleato
+    - [kn] Shankar Prasad
+    - [zh_CN] TeliuTe
+
+Version 2.26.1
+--------------
+
+This version has been skipped.
+
+Version 2.26.0
+--------------
+
+New and updated translations:
+
+    - [as] Amitakhya Phukan
+    - [el] Jennie Petoumenou
+    - [gu] Sweta Kothari, Ankit Patel
+    - [lt] Vytautas Liuolia 
+    - [mr] Sandeep Shedmake
+    - [te] Krishna Babu K
+    - [ru] Yuriy Penkin
+
+New and updated manual translation:
+
+    - [de] Mario Blättermann
+
 Version 2.25.92
 ---------------
 
