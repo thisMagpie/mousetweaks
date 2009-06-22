@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bn_IN\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=mousetweaks&component=general\n"
 "POT-Creation-Date: 2009-04-17 10:35+0000\n"
-"PO-Revision-Date: 2009-06-19 22:29+0530\n"
+"PO-Revision-Date: 2009-06-22 11:25+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bengali INDIA <discuss@lists.ankur.org.in>\n"
 "MIME-Version: 1.0\n"
@@ -208,7 +208,7 @@ msgid ""
 "in order to capture the pointer. Valid values are \"0\" if no button is "
 "needed, \"1\" for left button, \"2\" for middle button, and \"3\" for right "
 "button."
-msgstr ""
+msgstr "আটকের ক্ষেত্রের উপর পয়েন্টার উপস্থিত থাকলে, পয়েন্টারটি আটক করার উদ্দেশ্যে এই মাউস বাটনটি টিপে রাখা আবশ্যক। বৈধ মান হল: কোনো বাটন প্রয়োজন না হলে \"0\", বাঁদিকের বাটনের জন্য \"1\", মধ্যম বাটনের জন্য \"2\", এবং ডানদিকের বাটনের জন্য \"3\"।"
 
 #: ../data/pointer-capture-applet.schemas.in.h:12
 msgid ""
@@ -216,13 +216,13 @@ msgid ""
 "it's over the capture area. If this option is set as true, and a mouse "
 "button is set in the \"capture_button\" key, then the Alt key must be "
 "pressed while the mouse button is pressed."
-msgstr ""
+msgstr "আটক করার ক্ষেত্রের মধ্যে পয়েন্টার উপস্থিত থাকাকালীন, পয়েন্টারটি আটক করার জন্য Alt কি টেপা হবে কি না। এই মান true (সত্য) ধার্য করা হলে, ও \"capture_button\" কি-র জন্য কোনো মাউস বাটন নির্ধারিত হলে, এই মাউস বাটনটি টিপে রাখার সময় Alt কি টেপা আবশ্যক।"
 
 #: ../data/pointer-capture-applet.schemas.in.h:13
 msgid ""
 "Whether the Alt key must be pressed with the mouse button set in "
 "\"release_button\" for the pointer to be released from the capture area."
-msgstr ""
+msgstr "আটক করার ক্ষেত্র থেকে পয়েন্টার মুক্ত করার জন্য \"release_button\" কি-র জন্য ধার্য মাউস বাটনের সাথে Alt কি টেপা আবশ্যক কি না।"
 
 #: ../data/pointer-capture-applet.schemas.in.h:14
 msgid ""
@@ -230,13 +230,13 @@ msgid ""
 "it's over the capture area. If this option is set as true, and a mouse "
 "button is set in the \"capture_button\" key, then the Ctrl key must be "
 "pressed while the mouse button is pressed."
-msgstr ""
+msgstr "আটক করার ক্ষেত্রের মধ্যে পয়েন্টার উপস্থিত থাকাকালীন, পয়েন্টারটি আটক করার জন্য Ctrl কি টেপা হবে কি না। এই মান true (সত্য) ধার্য করা হলে, ও \"capture_button\" কি-র জন্য কোনো মাউস বাটন নির্ধারিত হলে, এই মাউস বাটনটি টিপে রাখার সময় Ctrl কি টেপা আবশ্যক।"
 
 #: ../data/pointer-capture-applet.schemas.in.h:15
 msgid ""
 "Whether the Ctrl key must be pressed with the mouse button set in "
 "\"release_button\" for the pointer to be released from the capture area."
-msgstr ""
+msgstr "আটক করার ক্ষেত্র থেকে পয়েন্টার মুক্ত করার জন্য \"release_button\" কি-র জন্য ধার্য মাউস বাটনের সাথে Ctrl কি টেপা আবশ্যক কি না।"
 
 #: ../data/pointer-capture-applet.schemas.in.h:16
 msgid ""
@@ -244,13 +244,13 @@ msgid ""
 "it's over the capture area. If this option is set as true, and a mouse "
 "button is set in the \"capture_button\" key, then the Shift key must be "
 "pressed while the mouse button is pressed."
-msgstr ""
+msgstr "আটক করার ক্ষেত্রের মধ্যে পয়েন্টার উপস্থিত থাকাকালীন, পয়েন্টারটি আটক করার জন্য Shift কি টেপা হবে কি না। এই মান true (সত্য) ধার্য করা হলে, ও \"capture_button\" কি-র জন্য কোনো মাউস বাটন নির্ধারিত হলে, এই মাউস বাটনটি টিপে রাখার সময় Shift কি টেপা আবশ্যক।"
 
 #: ../data/pointer-capture-applet.schemas.in.h:17
 msgid ""
 "Whether the Shift key must be pressed with the mouse button set in "
 "\"release_button\" for the pointer to be released from the capture area."
-msgstr ""
+msgstr "আটক করার ক্ষেত্র থেকে পয়েন্টার মুক্ত করার জন্য \"release_button\" কি-র জন্য ধার্য মাউস বাটনের সাথে Shift কি টেপা আবশ্যক কি না।"
 
 #: ../data/pointer-capture-applet.schemas.in.h:18
 msgid "Width of the capture area in pixels."
@@ -267,6 +267,9 @@ msgid ""
 "To enable support for assistive technologies and restart your session, press "
 "\"Enable and Log Out\"."
 msgstr ""
+"Mousetweaks প্রয়োগ করার সময় সেশানের মধ্যে সহায়ক প্রযুক্তি ব্যবস্থা সক্রিয় করা আবশ্যক।\n"
+"\n"
+"সহায়ক প্রযুক্তি আরম্ভ করে সেশান পুনরারম্ভ করার জন্য \"সক্রিয় করে লগ-আউট করুন\" শীর্ষক বাটন টিপুন।"
 
 #: ../src/mt-main.c:829
 msgid "Time to wait before a dwell click"
