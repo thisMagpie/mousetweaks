@@ -1,3 +1,18 @@
+Version 2.26.3
+---------------
+
+Misc improvements/fixes:
+
+    * Fix wrong GFDL version number in COPYING
+    * Use 'test ! -d' in autogen.sh, bgo#583311
+    * Directly link to xlib, bgo#583471
+    * Fix cursor drawing on 64bit platforms, bgo#584256
+
+New and updated translations:
+
+    - [bn_IN] Runa Bhattacharjee
+    - [el] Giannis Katsampirhs
+
 Version 2.26.2
 ---------------
 
