@@ -937,6 +937,7 @@ mt_main (int argc, char **argv, MtCliArgs cli_args)
     if (!(mt = mt_data_init ()))
 	goto out;
 
+    /* don't check a11y key in login mode */
     if (!cli_args.login)
 	if (!accessibility_enabled (mt))
 	    goto out;
