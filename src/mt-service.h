@@ -20,7 +20,7 @@
 #ifndef __MT_SERVICE_H__
 #define __MT_SERVICE_H__
 
-#include <glib-object.h>
+#include <dbus/dbus-glib.h>
 
 G_BEGIN_DECLS
 
@@ -41,11 +41,11 @@ struct _MtService {
 };
 
 GType       mt_service_get_type      (void) G_GNUC_CONST;
-MtService * mt_service_get_default   (void);
-gboolean    mt_service_set_clicktype (MtService *service,
-				      guint      clicktype,
-				      GError   **error);
-guint       mt_service_get_clicktype (MtService *service);
+MtService * mt_service_new           (DBusGConnection *connection);
+gboolean    mt_service_set_clicktype (MtService       *service,
+				      guint            clicktype,
+				      GError         **error);
+guint       mt_service_get_clicktype (MtService       *service);
 
 G_END_DECLS
 

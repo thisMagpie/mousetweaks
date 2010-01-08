@@ -22,25 +22,20 @@
 #include <locale.h>
 
 #include <gtk/gtk.h>
-#include <gdk/gdkx.h>
-#include <cspi/spi.h>
-#include <dbus/dbus-glib.h>
 #include <X11/extensions/XTest.h>
 
+#include "mt-main.h"
 #include "mt-common.h"
-#include "mt-service.h"
 #include "mt-pidfile.h"
 #include "mt-ctw.h"
-#include "mt-timer.h"
 #include "mt-cursor-manager.h"
-#include "mt-cursor.h"
-#include "mt-main.h"
-#include "mt-listener.h"
-#include "mt-accessible.h"
 
 #define GSM_DBUS_NAME      "org.gnome.SessionManager"
 #define GSM_DBUS_PATH      "/org/gnome/SessionManager"
 #define GSM_DBUS_INTERFACE "org.gnome.SessionManager"
+
+#define SPI_ACCESSIBLE_GET_ROLE   "GetRole"
+#define ACCESSIBLE_ROLE_HYPERLINK 88
 
 enum {
     PRESS = 0,
@@ -297,7 +292,7 @@ dwell_start_gesture (MtData *mt)
 	cursor = gdk_cursor_new (GDK_CROSS);
 	root = gdk_screen_get_root_window (mt_main_current_screen (mt));
 	gdk_pointer_grab (root, FALSE,
-			  GDK_POINTER_MOTION_MASK, 
+			  GDK_POINTER_MOTION_MASK,
 			  NULL, cursor,
 			  gtk_get_current_event_time ());
 	gdk_cursor_unref (cursor);
@@ -357,55 +352,25 @@ dwell_timer_finished (MtTimer *timer, gpointer data)
 }
 
 static gboolean
-eval_func (Accessible *a, gpointer data)
+hyperlink_is_focused (MtData *mt)
 {
-    gchar *name;
-    gboolean found = FALSE;
+    DBusGProxy *focus;
+    GError *error = NULL;
+    guint role = 0;
 
-    name = Accessible_getName (a);
-    if (name) {
-	found = g_str_equal (name, "Window List");
-	SPI_freeString (name);
-    }
-    return found;
-}
-
-static gboolean
-push_func (Accessible *a, gpointer data)
-{
-    MtData *mt = data;
-    AccessibleRole role;
-
-    role = Accessible_getRole (a);
-    if (role != SPI_ROLE_PANEL && role != SPI_ROLE_EMBEDDED)
+    focus = mt_listener_current_focus (mt->listener);
+    if (!focus)
 	return FALSE;
 
-    if (!mt_accessible_is_visible (a))
-	return FALSE;
-
-    if (Accessible_isComponent (a))
-	return mt_accessible_in_extents (a, mt->pointer_x, mt->pointer_y);
-
-    return TRUE;
-}
-
-static gboolean
-mt_main_use_move_release (MtData *mt)
-{
-    Accessible *point, *search;
-
-    point = mt_accessible_at_point (mt->pointer_x, mt->pointer_y);
-    if (point) {
-	search = mt_accessible_search (point,
-				       MT_SEARCH_TYPE_BREADTH,
-				       eval_func, push_func, mt);
-	Accessible_unref (point);
-	if (search) {
-	    Accessible_unref (search);
-	    return TRUE;
-	}
+    dbus_g_proxy_call (focus, SPI_ACCESSIBLE_GET_ROLE, &error,
+		       G_TYPE_INVALID, G_TYPE_UINT, &role, G_TYPE_INVALID);
+    if (error) {
+	g_warning ("%s", error->message);
+	g_error_free (error);
     }
-    return FALSE;
+    g_object_unref (focus);
+
+    return role == ACCESSIBLE_ROLE_HYPERLINK;
 }
 
 static gboolean
@@ -426,7 +391,7 @@ delay_timer_finished (MtTimer *timer, gpointer data)
 
     mt_cursor_manager_restore_all (mt_cursor_manager_get_default ());
 
-    if (mt->move_release || mt_main_use_move_release (mt)) {
+    if (hyperlink_is_focused (mt)) {
 	/* release the click outside of the focused object to
 	 * abort any action started by button-press.
 	 */
@@ -492,7 +457,7 @@ global_motion_event (MtListener *listener,
 				   mt->pointer_x, mt->pointer_y,
 				   mt->x_old, mt->y_old);
 	    }
-	    mt_main_draw_line (mt, 
+	    mt_main_draw_line (mt,
 			       mt->pointer_x, mt->pointer_y,
 			       event->x, event->y);
 	    mt->x_old = event->x;
@@ -519,29 +484,10 @@ global_button_event (MtListener *listener,
 	    mt_cursor_manager_restore_all (mt_cursor_manager_get_default ());
 	}
     }
-    /*
-     * cancel a dwell-click in progress if a physical button
-     * is pressed - useful for mixed use-cases and testing
-     */
+    /* cancel a dwell-click in progress if a physical button is pressed */
     if ((event->type == EV_BUTTON_PRESS && mt_timer_is_running (mt->dwell_timer)) ||
         (event->type == EV_BUTTON_RELEASE && mt->dwell_drag_started)) {
 	mt_dwell_click_cancel (mt);
-    }
-}
-
-static void
-global_focus_event (MtListener *listener,
-		    gpointer    data)
-{
-    MtData *mt = data;
-    Accessible *accessible;
-
-    if (mt->delay_enabled) {
-	accessible = mt_listener_current_focus (listener);
-	/* TODO: check for more objects and conditions.
-	 * Some links don't have jump actions, eg: text-mails in thunderbird.
-	 */
-	mt->move_release = mt_accessible_supports_action (accessible, "jump");
     }
 }
 
@@ -669,8 +615,10 @@ gconf_value_changed (GConfClient *client,
 
     if (g_str_equal (key, OPT_THRESHOLD) && value->type == GCONF_VALUE_INT)
 	mt->threshold = gconf_value_get_int (value);
-    else if (g_str_equal (key, OPT_DELAY) && value->type == GCONF_VALUE_BOOL)
+    else if (g_str_equal (key, OPT_DELAY) && value->type == GCONF_VALUE_BOOL) {
 	mt->delay_enabled = gconf_value_get_bool (value);
+	mt_listener_track_focus (mt->listener, mt->delay_enabled);
+    }
     else if (g_str_equal (key, OPT_DELAY_T) && value->type == GCONF_VALUE_FLOAT)
 	mt_timer_set_target (mt->delay_timer, gconf_value_get_float (value));
     else if (g_str_equal (key, OPT_DWELL) && value->type == GCONF_VALUE_BOOL) {
@@ -751,33 +699,35 @@ get_gconf_options (MtData *mt)
 static void
 mt_main_request_logout (MtData *mt)
 {
-    DBusGConnection *bus;
     DBusGProxy *proxy;
+    GError *error = NULL;
 
-    bus = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
-    if (bus) {
-	proxy = dbus_g_proxy_new_for_name (bus,
-					   GSM_DBUS_NAME,
-					   GSM_DBUS_PATH,
-					   GSM_DBUS_INTERFACE);
-	/*
-	 * Call logout method of session manager:
-	 * mode: 0 = normal, 1 = no confirmation, 2 = force
-	 */
-	dbus_g_proxy_call (proxy, "Logout", NULL,
-			   G_TYPE_UINT, 1, G_TYPE_INVALID,
-			   G_TYPE_INVALID);
-	g_object_unref (proxy);
+    proxy = dbus_g_proxy_new_for_name (mt->session_bus,
+				       GSM_DBUS_NAME,
+				       GSM_DBUS_PATH,
+				       GSM_DBUS_INTERFACE);
+    /*
+     * Call the Logout method of the session manager:
+     * mode: 0 = normal, 1 = no confirmation, 2 = force
+     */
+    dbus_g_proxy_call (proxy, "Logout", NULL,
+		       G_TYPE_UINT, 1, G_TYPE_INVALID,
+		       G_TYPE_INVALID);
+    g_object_unref (proxy);
+    if (error) {
+	g_warning ("Logout: %s", error->message);
+	g_error_free (error);
     }
 }
 
 static gboolean
-accessibility_enabled (MtData *mt,
-		       gint    spi_status)
+accessibility_enabled (MtData *mt)
 {
+    gboolean a11y;
     gint ret;
 
-    if (spi_status != 0) {
+    a11y = gconf_client_get_bool (mt->client, GNOME_A11Y_KEY, NULL);
+    if (!a11y) {
 	ret = mt_common_show_dialog
 	    (_("Assistive Technology Support is not Enabled"),
 	     _("Mousetweaks requires assistive technologies to be enabled "
@@ -792,7 +742,7 @@ accessibility_enabled (MtData *mt,
 	    mt_main_request_logout (mt);
 	}
 	else {
-	    /* reset the selected option again */
+	    /* reset the selected option */
 	    if (gconf_client_get_bool (mt->client, OPT_DELAY, NULL))
 		gconf_client_set_bool (mt->client, OPT_DELAY, FALSE, NULL);
 	    if (gconf_client_get_bool (mt->client, OPT_DWELL, NULL))
@@ -801,6 +751,30 @@ accessibility_enabled (MtData *mt,
 	return FALSE;
     }
     return TRUE;
+}
+
+static DBusGConnection *
+mt_main_get_accessibility_bus (void)
+{
+    DBusGConnection *bus = NULL;
+    Display *dpy = GDK_DISPLAY ();
+    Atom at;
+    gint af;
+    gulong nitems, bytes;
+    guchar *bus_addr;
+
+    gdk_error_trap_push ();
+    if (XGetWindowProperty (dpy, XDefaultRootWindow (dpy),
+			    XInternAtom (dpy, "AT_SPI_BUS", FALSE),
+			    0L, 32L, False, AnyPropertyType,
+			    &at, &af, &nitems, &bytes, &bus_addr) == Success) {
+	if (at != None && af == 8)
+	    bus = dbus_g_connection_open ((gchar *) bus_addr, NULL);
+
+	XFree (bus_addr);
+    }
+    gdk_error_trap_pop ();
+    return bus;
 }
 
 static MtData *
@@ -816,9 +790,22 @@ mt_data_init (void)
 			      &ev_base, &err_base, &maj, &min)) {
 	XCloseDisplay (mt->xtst_display);
 	g_slice_free (MtData, mt);
-	g_critical ("No XTest extension found. Aborting..");
+	g_print ("No XTest extension found. Aborting.");
 	return NULL;
     }
+
+    mt->session_bus = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
+    if (!mt->session_bus) {
+	g_print ("No connection to DBus session bus. Aborting.");
+	XCloseDisplay (mt->xtst_display);
+	g_slice_free (MtData, mt);
+	return NULL;
+    }
+
+    /* connect to a11y bus, if it is not available reuse the session bus */
+    mt->a11y_bus = mt_main_get_accessibility_bus ();
+    if (!mt->a11y_bus)
+	mt->a11y_bus = dbus_g_connection_ref (mt->session_bus);
 
     mt->client = gconf_client_get_default ();
     gconf_client_add_dir (mt->client, GNOME_MOUSE_DIR,
@@ -840,7 +827,7 @@ mt_data_init (void)
     g_signal_connect (mt->dwell_timer, "tick",
 		      G_CALLBACK (mt_main_timer_tick), mt);
 
-    mt->service = mt_service_get_default ();
+    mt->service = mt_service_new (mt->session_bus);
     mt_service_set_clicktype (mt->service, DWELL_CLICK_TYPE_SINGLE, NULL);
 
     mt->n_screens = gdk_display_get_n_screens (gdk_display_get_default ());
@@ -854,17 +841,22 @@ mt_data_init (void)
 static void
 mt_data_free (MtData *mt)
 {
-    g_object_unref (mt->delay_timer);
-    g_object_unref (mt->dwell_timer);
-    g_object_unref (mt->service);
-    g_object_unref (mt->client);
+    if (mt) {
+	g_object_unref (mt->delay_timer);
+	g_object_unref (mt->dwell_timer);
+	g_object_unref (mt->service);
+	g_object_unref (mt->client);
+	dbus_g_connection_unref (mt->session_bus);
+	dbus_g_connection_unref (mt->a11y_bus);
+	XCloseDisplay (mt->xtst_display);
 
-    if (mt->ui) {
-	gtk_widget_destroy (mt_ctw_get_window (mt));
-	g_object_unref (mt->ui);
+	if (mt->ui) {
+	    gtk_widget_destroy (mt_ctw_get_window (mt));
+	    g_object_unref (mt->ui);
+	}
+
+	g_slice_free (MtData, mt);
     }
-
-    g_slice_free (MtData, mt);
 }
 
 static MtCliArgs
@@ -929,12 +921,11 @@ mt_main (int argc, char **argv, MtCliArgs cli_args)
 {
     MtData *mt;
     MtCursorManager *manager;
-    MtListener *listener;
-    gint spi_status;
-    gint spi_leaks = 0;
+
+    gtk_init (&argc, &argv);
 
     if (mt_pidfile_create () < 0) {
-	g_warning ("Couldn't create PID file.");
+	g_print ("Could not create PID file. Aborting.");
 	return;
     }
 
@@ -943,20 +934,12 @@ mt_main (int argc, char **argv, MtCliArgs cli_args)
     signal (SIGQUIT, signal_handler);
     signal (SIGHUP, signal_handler);
 
-    gtk_init (&argc, &argv);
+    if (!(mt = mt_data_init ()))
+	goto out;
 
-    mt = mt_data_init ();
-    if (!mt)
-	goto FINISH;
-
-    spi_status = SPI_init ();
-    /* don't check a11y key in login mode */
-    if (!cli_args.login) {
-	if (!accessibility_enabled (mt, spi_status)) {
-	    mt_data_free (mt);
-	    goto FINISH;
-	}
-    }
+    if (!cli_args.login)
+	if (!accessibility_enabled (mt))
+	    goto out;
 
     /* load gconf settings */
     get_gconf_options (mt);
@@ -985,9 +968,9 @@ mt_main (int argc, char **argv, MtCliArgs cli_args)
 	g_free (cli_args.mode);
     }
 
-    /* init click-type windoe */
+    /* init click-type window */
     if (!mt_ctw_init (mt, cli_args.pos_x, cli_args.pos_y))
-	goto CLEANUP;
+	goto out;
 
     /* init cursor animation */
     manager = mt_cursor_manager_get_default ();
@@ -998,29 +981,21 @@ mt_main (int argc, char **argv, MtCliArgs cli_args)
                       G_CALLBACK (cursor_cache_cleared), mt);
 
     /* init at-spi signals */
-    listener = mt_listener_get_default ();
-    g_signal_connect (listener, "motion_event",
+    mt->listener = mt_listener_new (mt->a11y_bus);
+    mt_listener_track_focus (mt->listener, mt->delay_enabled);
+    g_signal_connect (mt->listener, "motion_event",
                       G_CALLBACK (global_motion_event), mt);
-    g_signal_connect (listener, "button_event",
+    g_signal_connect (mt->listener, "button_event",
                       G_CALLBACK (global_button_event), mt);
-    g_signal_connect (listener, "focus_changed",
-                      G_CALLBACK (global_focus_event), mt);
 
     gtk_main ();
 
     mt_cursor_manager_restore_all (manager);
     g_object_unref (manager);
-    g_object_unref (listener);
-
-CLEANUP:
-    spi_leaks = SPI_exit ();
+    g_object_unref (mt->listener);
+out:
     mt_data_free (mt);
-FINISH:
     mt_pidfile_remove ();
-
-    if (spi_leaks)
-	g_warning ("AT-SPI reported %i leak%s.",
-		   spi_leaks, spi_leaks != 1 ? "s" : "");
 }
 
 int

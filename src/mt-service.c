@@ -17,7 +17,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <dbus/dbus-glib.h>
 #include <dbus/dbus-glib-bindings.h>
 
 #include "mt-service.h"
@@ -27,7 +26,8 @@
 #define MOUSETWEAKS_DBUS_PATH    "/org/gnome/Mousetweaks"
 
 struct _MtServicePrivate {
-    guint clicktype;
+    DBusGConnection *connection;
+    guint            clicktype;
 };
 
 enum {
@@ -40,8 +40,26 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (MtService, mt_service, G_TYPE_OBJECT)
 
-static void mt_service_dispose  (GObject   *object);
-static void mt_service_register (MtService *service);
+static void
+mt_service_init (MtService *service)
+{
+    service->priv = G_TYPE_INSTANCE_GET_PRIVATE (service,
+						 MT_TYPE_SERVICE,
+						 MtServicePrivate);
+}
+
+static void
+mt_service_dispose (GObject *object)
+{
+    MtServicePrivate *priv = MT_SERVICE (object)->priv;
+
+    if (priv->connection) {
+	g_signal_emit (object, signals[STATUS_CHANGED], 0, FALSE);
+	dbus_g_connection_unref (priv->connection);
+	priv->connection = NULL;
+    }
+    G_OBJECT_CLASS (mt_service_parent_class)->dispose (object);
+}
 
 static void
 mt_service_class_init (MtServiceClass *klass)
@@ -71,43 +89,17 @@ mt_service_class_init (MtServiceClass *klass)
 				     &dbus_glib_mt_service_object_info);
 }
 
-static void
-mt_service_init (MtService *service)
-{
-    service->priv = G_TYPE_INSTANCE_GET_PRIVATE (service,
-						 MT_TYPE_SERVICE,
-						 MtServicePrivate);
-    mt_service_register (service);
-}
-
-static void
-mt_service_dispose (GObject *object)
-{
-    g_signal_emit (object, signals[STATUS_CHANGED], 0, FALSE);
-
-    G_OBJECT_CLASS (mt_service_parent_class)->dispose (object);
-}
-
-static void
+static gboolean
 mt_service_register (MtService *service)
 {
-    DBusGConnection *bus;
     DBusGProxy *proxy;
     GError *error = NULL;
     guint result;
 
-    bus = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-    if (bus == NULL) {
-	g_warning ("Unable to connect to session bus: %s", error->message);
-	g_error_free (error);
-	return;
-    }
-
-    proxy = dbus_g_proxy_new_for_name (bus,
+    proxy = dbus_g_proxy_new_for_name (service->priv->connection,
 				       DBUS_SERVICE_DBUS,
 				       DBUS_PATH_DBUS,
 				       DBUS_INTERFACE_DBUS);
-
     if (!dbus_g_proxy_call (proxy, "RequestName", &error,
 			    G_TYPE_STRING, MOUSETWEAKS_DBUS_SERVICE,
 			    G_TYPE_UINT, DBUS_NAME_FLAG_DO_NOT_QUEUE,
@@ -117,34 +109,32 @@ mt_service_register (MtService *service)
 	g_warning ("Unable to acquire name: %s", error->message);
 	g_error_free (error);
 	g_object_unref (proxy);
-	return;
+	return FALSE;
     }
-
     g_object_unref (proxy);
 
     if (result == DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER)
-	dbus_g_connection_register_g_object (bus,
+	dbus_g_connection_register_g_object (service->priv->connection,
 					     MOUSETWEAKS_DBUS_PATH,
 					     G_OBJECT (service));
     else
 	g_warning ("DBus: Not primary name owner.");
-}
 
-static MtService *
-mt_service_new (void)
-{
-    return g_object_new (MT_TYPE_SERVICE, NULL);
+    return TRUE;
 }
 
 MtService *
-mt_service_get_default (void)
+mt_service_new (DBusGConnection *connection)
 {
-    static MtService *service = NULL;
+    MtService *service;
 
-    if (!service) {
-	service = mt_service_new ();
-	g_signal_emit (service, signals[STATUS_CHANGED], 0, TRUE);
-    }
+    g_return_val_if_fail (connection != NULL, NULL);
+
+    service = g_object_new (MT_TYPE_SERVICE, NULL);
+    service->priv->connection = dbus_g_connection_ref (connection);
+
+    mt_service_register (service);
+    g_signal_emit (service, signals[STATUS_CHANGED], 0, TRUE);
 
     return service;
 }
@@ -157,10 +147,8 @@ mt_service_set_clicktype (MtService *service,
     g_return_val_if_fail (MT_IS_SERVICE (service), FALSE);
 
     service->priv->clicktype = clicktype;
+    g_signal_emit (service, signals[CLICKTYPE_CHANGED], 0, clicktype);
 
-    g_signal_emit (service,
-		   signals[CLICKTYPE_CHANGED],
-		   0, service->priv->clicktype);
     return TRUE;
 }
 

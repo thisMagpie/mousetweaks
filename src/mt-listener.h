@@ -20,10 +20,7 @@
 #ifndef __MT_LISTENER_H__
 #define __MT_LISTENER_H__
 
-#include <glib-object.h>
-#include <cspi/spi.h>
-
-G_BEGIN_DECLS
+#include <dbus/dbus-glib.h>
 
 #define MT_TYPE_EVENT            (mt_event_get_type ())
 #define MT_TYPE_LISTENER         (mt_listener_get_type ())
@@ -32,6 +29,8 @@ G_BEGIN_DECLS
 #define MT_IS_LISTENER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), MT_TYPE_LISTENER))
 #define MT_IS_LISTENER_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), MT_TYPE_LISTENER))
 #define MT_LISTENER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), MT_TYPE_LISTENER, MtListenerClass))
+
+G_BEGIN_DECLS
 
 typedef GObjectClass              MtListenerClass;
 typedef struct _MtListener        MtListener;
@@ -43,8 +42,10 @@ struct _MtListener {
 };
 
 GType        mt_listener_get_type       (void) G_GNUC_CONST;
-MtListener * mt_listener_get_default    (void);
-Accessible * mt_listener_current_focus  (MtListener *listener);
+MtListener * mt_listener_new            (DBusGConnection *connection);
+DBusGProxy * mt_listener_current_focus  (MtListener      *listener);
+void         mt_listener_track_focus    (MtListener      *listener,
+					 gboolean         track);
 
 typedef enum {
     EV_MOTION = 0,
@@ -55,9 +56,9 @@ typedef enum {
 typedef struct _MtEvent MtEvent;
 struct _MtEvent {
     MtEventType type;
-    gint        x;
-    gint        y;
-    gint        button;
+    guint       x;
+    guint       y;
+    guint       button;
 };
 
 GType     mt_event_get_type (void) G_GNUC_CONST;

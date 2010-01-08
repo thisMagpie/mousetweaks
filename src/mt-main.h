@@ -22,21 +22,27 @@
 
 #include <gdk/gdkx.h>
 #include <gconf/gconf-client.h>
+#include <dbus/dbus-glib.h>
 
 #include "mt-timer.h"
 #include "mt-service.h"
 #include "mt-cursor.h"
+#include "mt-listener.h"
 
 G_BEGIN_DECLS
 
 typedef struct _MtData MtData;
 struct _MtData {
+    DBusGConnection *session_bus;
+    DBusGConnection *a11y_bus;
+
     GConfClient *client;
     GtkBuilder  *ui;
     MtService   *service;
     MtTimer     *delay_timer;
     MtTimer     *dwell_timer;
     MtCursor    *cursor;
+    MtListener  *listener;
     Display     *xtst_display;
     gint         n_screens;
     gint         direction;
@@ -54,13 +60,12 @@ struct _MtData {
     guint        dwell_enabled  : 1;
     guint        dwell_show_ctw : 1;
     guint        animate_cursor : 1;
+    guint        left_handed    : 1;
 
     /* state flags */
-    guint        left_handed           : 1;
     guint        dwell_drag_started    : 1;
     guint        dwell_gesture_started : 1;
     guint        override_cursor       : 1;
-    guint        move_release          : 1;
 };
 
 G_END_DECLS

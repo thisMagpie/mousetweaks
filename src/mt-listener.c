@@ -17,35 +17,58 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <glib.h>
+#include <dbus/dbus-glib-lowlevel.h>
 
 #include "mt-listener.h"
 
+#define SPI_EVENT_MOUSE_IFACE "org.freedesktop.atspi.Event.Mouse"
+#define SPI_SIGNAL_BUTTON     "Button"
+#define SPI_SIGNAL_ABS        "Abs"
+
+#define SPI_EVENT_FOCUS_IFACE "org.freedesktop.atspi.Event.Focus"
+#define SPI_SIGNAL_FOCUS      "Focus"
+
+#define SPI_ACCESSIBLE_IFACE  "org.freedesktop.atspi.Accessible"
+
 struct _MtListenerPrivate {
-    AccessibleEventListener *motion;
-    AccessibleEventListener *button;
-    AccessibleEventListener *focus;
-    Accessible              *current_focus;
+    DBusGConnection *connection;
+    DBusGProxy      *focus;
+    guint            track_focus : 1;
 };
 
 enum {
     MOTION_EVENT,
     BUTTON_EVENT,
-    FOCUS_CHANGED,
     LAST_SIGNAL
 };
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static void mt_listener_dispose      (GObject               *object);
-static void mt_listener_motion_event (const AccessibleEvent *event,
-				      gpointer               data);
-static void mt_listener_button_event (const AccessibleEvent *event,
-				      gpointer               data);
-static void mt_listener_focus_event  (const AccessibleEvent *event,
-				      gpointer               data);
-
 G_DEFINE_TYPE (MtListener, mt_listener, G_TYPE_OBJECT)
+
+static void
+mt_listener_init (MtListener *listener)
+{
+    listener->priv = G_TYPE_INSTANCE_GET_PRIVATE (listener,
+						  MT_TYPE_LISTENER,
+						  MtListenerPrivate);
+}
+
+static void
+mt_listener_dispose (GObject *object)
+{
+    MtListenerPrivate *priv = MT_LISTENER (object)->priv;
+
+    if (priv->connection) {
+	dbus_g_connection_unref (priv->connection);
+	priv->connection = NULL;
+    }
+    if (priv->focus) {
+	g_object_unref (priv->focus);
+	priv->focus = NULL;
+    }
+    G_OBJECT_CLASS (mt_listener_parent_class)->dispose (object);
+}
 
 static void
 mt_listener_class_init (MtListenerClass *klass)
@@ -54,15 +77,14 @@ mt_listener_class_init (MtListenerClass *klass)
 
     object_class->dispose = mt_listener_dispose;
 
-    signals[MOTION_EVENT] = 
+    signals[MOTION_EVENT] =
 	g_signal_new (g_intern_static_string ("motion_event"),
 		      G_OBJECT_CLASS_TYPE (klass),
 		      G_SIGNAL_RUN_LAST,
 		      0, NULL, NULL,
 		      g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE,
 		      1, MT_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
-
-    signals[BUTTON_EVENT] = 
+    signals[BUTTON_EVENT] =
 	g_signal_new (g_intern_static_string ("button_event"),
 		      G_OBJECT_CLASS_TYPE (klass),
 		      G_SIGNAL_RUN_LAST,
@@ -70,64 +92,148 @@ mt_listener_class_init (MtListenerClass *klass)
 		      g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE,
 		      1, MT_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
-    signals[FOCUS_CHANGED] =
-	g_signal_new (g_intern_static_string ("focus_changed"),
-		      G_OBJECT_CLASS_TYPE (klass),
-		      G_SIGNAL_RUN_LAST,
-		      0, NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
-
     g_type_class_add_private (klass, sizeof (MtListenerPrivate));
 }
 
-static void
-mt_listener_init (MtListener *listener)
+static gboolean
+mt_listener_msg_to_event (MtListener  *listener,
+                          DBusMessage *msg,
+                          MtEvent     *event)
 {
-    MtListenerPrivate *priv;
+    DBusMessageIter iter;
+    dbus_uint32_t u;
+    char *s;
+    int type, arg = 1;
 
-    listener->priv = priv = G_TYPE_INSTANCE_GET_PRIVATE (listener,
-							 MT_TYPE_LISTENER,
-							 MtListenerPrivate);
+    dbus_message_iter_init (msg, &iter);
+    while (dbus_message_iter_has_next (&iter))
+    {
+	type = dbus_message_iter_get_arg_type (&iter);
+	if (type == DBUS_TYPE_STRING) {
+	    dbus_message_iter_get_basic (&iter, &s);
+	    if (!s)
+		return FALSE;
+	    if (*s == '\0') {
+		event->button = 0;
+		event->type = EV_MOTION;
+	    }
+	    else if (s[0] && s[1]) {
+		event->button = (guint) g_ascii_strtod (s, NULL);
+		event->type = s[1] == 'p' ? EV_BUTTON_PRESS : EV_BUTTON_RELEASE;
+	    }
+	    else
+		return FALSE;
+	}
+	else if (type == DBUS_TYPE_UINT32) {
+	    dbus_message_iter_get_basic (&iter, &u);
+	    if (arg++ == 1)
+		event->x = u;
+	    else
+		event->y = u;
+	}
+	dbus_message_iter_next (&iter);
+    }
+    return TRUE;
+}
 
-    priv->motion = SPI_createAccessibleEventListener (mt_listener_motion_event,
-						      listener);
-    SPI_registerGlobalEventListener (priv->motion, "mouse:abs");
+static DBusHandlerResult
+mt_listener_dispatch (DBusConnection *bus,
+		      DBusMessage    *msg,
+		      gpointer        data)
+{
+    MtListener *listener = data;
+    MtEvent ev;
 
-    priv->button = SPI_createAccessibleEventListener (mt_listener_button_event,
-						      listener);
-    SPI_registerGlobalEventListener (priv->button, "mouse:button:");
+    if (dbus_message_has_sender (msg, DBUS_SERVICE_DBUS))
+	return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 
-    priv->focus = SPI_createAccessibleEventListener (mt_listener_focus_event,
-						     listener);
-    SPI_registerGlobalEventListener (priv->focus, "focus:");
+    if (dbus_message_has_member (msg, SPI_SIGNAL_ABS))
+    {
+	if (mt_listener_msg_to_event (listener, msg, &ev))
+	    g_signal_emit (data, signals[MOTION_EVENT], 0, &ev);
+    }
+    else if (dbus_message_has_member (msg, SPI_SIGNAL_BUTTON))
+    {
+	if (mt_listener_msg_to_event (listener, msg, &ev))
+	    g_signal_emit (data, signals[BUTTON_EVENT], 0, &ev);
+    }
+    else if (listener->priv->track_focus &&
+	     dbus_message_has_member (msg, SPI_SIGNAL_FOCUS))
+    {
+	if (listener->priv->focus)
+	    g_object_unref (listener->priv->focus);
+
+	listener->priv->focus =
+	    dbus_g_proxy_new_for_name (listener->priv->connection,
+				       dbus_message_get_sender (msg),
+				       dbus_message_get_path (msg),
+				       SPI_ACCESSIBLE_IFACE);
+    }
+    return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 }
 
 static void
-mt_listener_dispose (GObject *object)
+mt_listener_setup_filter (MtListener *listener)
 {
-    MtListenerPrivate *priv = MT_LISTENER (object)->priv;
+    DBusConnection *bus;
 
-    if (priv->motion) {
-	SPI_deregisterGlobalEventListenerAll (priv->motion);
-	AccessibleEventListener_unref (priv->motion);
-	priv->motion = NULL;
-    }
-    if (priv->button) {
-	SPI_deregisterGlobalEventListenerAll (priv->button);
-	AccessibleEventListener_unref (priv->button);
-	priv->button = NULL;
-    }
-    if (priv->focus) {
-	SPI_deregisterGlobalEventListenerAll (priv->focus);
-	AccessibleEventListener_unref (priv->focus);
+    bus = dbus_g_connection_get_connection (listener->priv->connection);
+    dbus_bus_add_match (bus,
+			"type='signal',"
+			"interface='" SPI_EVENT_MOUSE_IFACE "',"
+			"member='" SPI_SIGNAL_ABS "'",
+			NULL);
+    dbus_bus_add_match (bus,
+			"type='signal',"
+			"interface='" SPI_EVENT_MOUSE_IFACE "',"
+			"member='" SPI_SIGNAL_BUTTON "'",
+			NULL);
+    dbus_bus_add_match (bus,
+			"type='signal',"
+			"interface='" SPI_EVENT_FOCUS_IFACE "'",
+			NULL);
+    dbus_connection_add_filter (bus, mt_listener_dispatch, listener, NULL);
+}
+
+MtListener *
+mt_listener_new (DBusGConnection *connection)
+{
+    MtListener *listener;
+
+    g_return_val_if_fail (connection != NULL, NULL);
+
+    listener = g_object_new (MT_TYPE_LISTENER, NULL);
+    listener->priv->connection = dbus_g_connection_ref (connection);
+    mt_listener_setup_filter (listener);
+
+    return listener;
+}
+
+DBusGProxy *
+mt_listener_current_focus (MtListener *listener)
+{
+    g_return_val_if_fail (MT_IS_LISTENER (listener), NULL);
+
+    if (listener->priv->track_focus && listener->priv->focus)
+	return g_object_ref (listener->priv->focus);
+    else
+	return NULL;
+}
+
+void
+mt_listener_track_focus (MtListener *listener,
+                         gboolean    track)
+{
+    MtListenerPrivate *priv;
+
+    g_return_if_fail (MT_IS_LISTENER (listener));
+
+    priv = listener->priv;
+    priv->track_focus = track;
+    if (!track && priv->focus) {
+	g_object_unref (priv->focus);
 	priv->focus = NULL;
     }
-    if (priv->current_focus) {
-	Accessible_unref (priv->current_focus);
-	priv->current_focus = NULL;
-    }
-
-    G_OBJECT_CLASS (mt_listener_parent_class)->dispose (object);
 }
 
 GType
@@ -145,77 +251,11 @@ mt_event_get_type (void)
 MtEvent *
 mt_event_copy (const MtEvent *event)
 {
-    return (MtEvent *) g_memdup (event, sizeof (MtEvent));
+    return g_memdup (event, sizeof (MtEvent));
 }
 
 void
 mt_event_free (MtEvent *event)
 {
     g_free (event);
-}
-
-static void
-mt_listener_motion_event (const AccessibleEvent *event, gpointer data)
-{
-    MtEvent ev;
-
-    ev.type = EV_MOTION;
-    ev.x = (gint) event->detail1;
-    ev.y = (gint) event->detail2;
-    ev.button = 0;
-
-    g_signal_emit (data, signals[MOTION_EVENT], 0, &ev);
-}
-
-static void
-mt_listener_button_event (const AccessibleEvent *event, gpointer data)
-{
-    MtEvent ev;
-
-    /*
-     * This is obviously dangerous, but it should be
-     * guarantied that event-type strings will always
-     * be in the form of "mouse:button:[1,2,3][p,r]"
-     */
-    ev.type = event->type[14] == 'p' ? EV_BUTTON_PRESS : EV_BUTTON_RELEASE;
-    ev.x = (gint) event->detail1;
-    ev.y = (gint) event->detail2;
-    ev.button = event->type[13] == '1' ? 1 : (event->type[13] == '2' ? 2 : 3);
-
-    g_signal_emit (data, signals[BUTTON_EVENT], 0, &ev);
-}
-
-static void
-mt_listener_focus_event (const AccessibleEvent *event, gpointer data)
-{
-    MtListenerPrivate *priv = MT_LISTENER (data)->priv;
-
-    if (event->source) {
-	if (priv->current_focus)
-	    Accessible_unref (priv->current_focus);
-
-	Accessible_ref (event->source);
-	priv->current_focus = event->source;
-
-	g_signal_emit (data, signals[FOCUS_CHANGED], 0);
-    }
-}
-
-MtListener *
-mt_listener_get_default (void)
-{
-    static MtListener *listener = NULL;
-
-    if (!listener)
-	listener = g_object_new (MT_TYPE_LISTENER, NULL);
-
-    return listener;
-}
-
-Accessible *
-mt_listener_current_focus (MtListener *listener)
-{
-    g_return_val_if_fail (MT_IS_LISTENER (listener), NULL);
-
-    return listener->priv->current_focus;
 }
