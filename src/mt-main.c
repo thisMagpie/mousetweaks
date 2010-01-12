@@ -376,10 +376,7 @@ hyperlink_is_focused (MtData *mt)
 static gboolean
 right_click_timeout (gpointer data)
 {
-    MtData *mt = data;
-
-    mt_main_generate_button_event (mt, 3, CLICK, CurrentTime);
-
+    mt_main_generate_button_event (data, 3, CLICK, CurrentTime);
     return FALSE;
 }
 
@@ -387,25 +384,14 @@ static void
 delay_timer_finished (MtTimer *timer, gpointer data)
 {
     MtData *mt = data;
-    GdkScreen *screen;
 
     mt_cursor_manager_restore_all (mt_cursor_manager_get_default ());
 
-    if (hyperlink_is_focused (mt)) {
-	/* release the click outside of the focused object to
-	 * abort any action started by button-press.
-	 */
-	screen = mt_main_current_screen (mt);
-	mt_main_generate_motion_event (screen, 0, 0);
+    /* don't send a button release event if the focus object is a link */
+    if (!hyperlink_is_focused (mt))
 	mt_main_generate_button_event (mt, 1, RELEASE, CurrentTime);
-	mt_main_generate_motion_event (screen, mt->pointer_x, mt->pointer_y);
-    }
-    else {
-	mt_main_generate_button_event (mt, 1, RELEASE, CurrentTime);
-    }
-    /* wait 100 msec before releasing the button again -
-     * gives apps some time to release active grabs, eg: gnome-panel 'move'
-     */
+
+    /* gives apps some time to release active grabs */
     g_timeout_add (100, right_click_timeout, data);
 }
 
