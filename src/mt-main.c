@@ -696,7 +696,7 @@ mt_main_request_logout (MtData *mt)
      * Call the Logout method of the session manager:
      * mode: 0 = normal, 1 = no confirmation, 2 = force
      */
-    dbus_g_proxy_call (proxy, "Logout", NULL,
+    dbus_g_proxy_call (proxy, "Logout", &error,
 		       G_TYPE_UINT, 1, G_TYPE_INVALID,
 		       G_TYPE_INVALID);
     g_object_unref (proxy);
