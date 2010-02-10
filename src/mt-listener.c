@@ -21,14 +21,21 @@
 
 #include "mt-listener.h"
 
-#define SPI_EVENT_MOUSE_IFACE "org.freedesktop.atspi.Event.Mouse"
-#define SPI_SIGNAL_BUTTON     "Button"
-#define SPI_SIGNAL_ABS        "Abs"
+#define SPI_REGISTRY_NAME           "org.freedesktop.atspi.Registry"
 
-#define SPI_EVENT_FOCUS_IFACE "org.freedesktop.atspi.Event.Focus"
-#define SPI_SIGNAL_FOCUS      "Focus"
+#define SPI_EVENT_MOUSE_IFACE       "org.freedesktop.atspi.Event.Mouse"
+#define SPI_EVENT_FOCUS_IFACE       "org.freedesktop.atspi.Event.Focus"
+#define SPI_ACCESSIBLE_IFACE        "org.freedesktop.atspi.Accessible"
+#define SPI_DEC_IFACE               "org.freedesktop.atspi.DeviceEventController"
 
-#define SPI_ACCESSIBLE_IFACE  "org.freedesktop.atspi.Accessible"
+#define SPI_DEC_PATH                "/org/freedesktop/atspi/registry/deviceeventcontroller"
+
+#define SPI_SIGNAL_BUTTON           "Button"
+#define SPI_SIGNAL_ABS              "Abs"
+#define SPI_SIGNAL_FOCUS            "Focus"
+
+#define SPI_METHOD_ADD_POLL         "MousePollAdd"
+#define SPI_METHOD_REMOVE_POLL      "MousePollRemove"
 
 struct _MtListenerPrivate {
     DBusGConnection *connection;
@@ -47,6 +54,26 @@ static guint signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE (MtListener, mt_listener, G_TYPE_OBJECT)
 
 static void
+mt_listener_toggle_poll (MtListener *listener, gboolean poll)
+{
+    DBusGProxy *dec_proxy;
+    GError *error = NULL;
+
+    dec_proxy = dbus_g_proxy_new_for_name (listener->priv->connection,
+                                           SPI_REGISTRY_NAME,
+                                           SPI_DEC_PATH,
+                                           SPI_DEC_IFACE);
+    dbus_g_proxy_call (dec_proxy,
+                       poll ? SPI_METHOD_ADD_POLL : SPI_METHOD_REMOVE_POLL,
+                       &error, G_TYPE_INVALID, G_TYPE_INVALID);
+    if (error) {
+	g_warning ("%s", error->message);
+	g_error_free (error);
+    }
+    g_object_unref (dec_proxy);
+}
+
+static void
 mt_listener_init (MtListener *listener)
 {
     listener->priv = G_TYPE_INSTANCE_GET_PRIVATE (listener,
@@ -60,6 +87,8 @@ mt_listener_dispose (GObject *object)
     MtListenerPrivate *priv = MT_LISTENER (object)->priv;
 
     if (priv->connection) {
+        mt_listener_toggle_poll (MT_LISTENER (object), FALSE);
+
 	dbus_g_connection_unref (priv->connection);
 	priv->connection = NULL;
     }
@@ -204,7 +233,9 @@ mt_listener_new (DBusGConnection *connection)
 
     listener = g_object_new (MT_TYPE_LISTENER, NULL);
     listener->priv->connection = dbus_g_connection_ref (connection);
+
     mt_listener_setup_filter (listener);
+    mt_listener_toggle_poll (listener, TRUE);
 
     return listener;
 }
