@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-12 22:28+0100\n"
-"PO-Revision-Date: 2009-02-12 22:39+0100\n"
+"PO-Revision-Date: 2010-03-24 12:55+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/DwellClick_Factory.server.in.in.h:1 ../src/dwell-click-applet.c:561
 msgid "Dwell Click"
@@ -148,7 +148,7 @@ msgstr "Erakutsi klik motaren leihoa"
 
 #: ../data/mousetweaks.schemas.in.h:22
 msgid "Show elapsed time as cursor overlay."
-msgstr "Erakutsi aterapena kurtsorearen gainean."
+msgstr "Erakutsi atzerapena kurtsorearen gainean."
 
 #: ../data/mousetweaks.schemas.in.h:23
 msgid "Time in seconds before a click is triggered"
@@ -211,7 +211,7 @@ msgid ""
 "needed, \"1\" for left button, \"2\" for middle button, and \"3\" for right "
 "button."
 msgstr ""
-"Saguaren botoi hau sakatu behar da erakuslea kapturatzeko kapturaren areaaren "
+"Saguaren botoi hau sakatu behar da erakuslea kapturatzeko kapturaren arearen "
 "gainean dagoenean. Balio erabilgarriak: \"0\" botoirik ez bada behar, "
 "\"1\" ezkerreko botoia, \"2\" erdiko botoia, eta \"3\" eskuineko botoia."
 
