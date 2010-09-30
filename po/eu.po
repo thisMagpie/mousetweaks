@@ -1,14 +1,14 @@
-# translation of eu.po to Basque
+# translation of eu_to_be_translate.po to Basque
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: eu_to_be_translate\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-27 18:36+0100\n"
-"PO-Revision-Date: 2010-03-27 18:37+0100\n"
+"POT-Creation-Date: 2010-09-30 23:54+0200\n"
+"PO-Revision-Date: 2010-09-30 23:55+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgid "Drag Click"
 msgstr "Arrastatzeko klik"
 
 #: ../data/dwell-click-applet.ui.h:6 ../data/mousetweaks.schemas.in.h:12
-#: ../src/mt-main.c:869
+#: ../src/mt-main.c:807
 msgid "Enable dwell click"
 msgstr "Gaitu klik-tenporizatua"
 
@@ -56,10 +56,10 @@ msgstr "_Alt"
 
 #: ../data/pointer-capture-applet.ui.h:2
 msgid ""
-"Area to freeze the mouse pointer on the panel.\n"
+"Area to lock the pointer on the panel.\n"
 "Part of Mousetweaks"
 msgstr ""
-"Saguaren erakuslea izozteko area panelean.\n"
+"Saguaren erakuslea blokeatzeko area panelean.\n"
 "Mousetweaks-en zati da"
 
 #: ../data/pointer-capture-applet.ui.h:4
@@ -107,7 +107,7 @@ msgid "Sh_ift"
 msgstr "Ma_ius"
 
 #: ../data/pointer-capture-applet.ui.h:15
-msgid "Size of Capture Area"
+msgid "Size of the Capture Area"
 msgstr "Kaptura-arearen tamaina"
 
 #: ../data/pointer-capture-applet.ui.h:16
@@ -138,7 +138,7 @@ msgstr "Erakutsi ikonoak bakarrik"
 msgid "Show Text only"
 msgstr "Erakutsi testua soilik"
 
-#: ../data/DwellClick_Factory.server.in.in.h:1 ../src/dwell-click-applet.c:561
+#: ../data/DwellClick_Factory.server.in.in.h:1 ../src/dwell-click-applet.c:619
 msgid "Dwell Click"
 msgstr "Klik-tenporizatua"
 
@@ -151,7 +151,7 @@ msgid "Area to lock the pointer"
 msgstr "Area erakuslea blokeatzeko"
 
 #: ../data/PointerCapture_Factory.server.in.in.h:2
-#: ../src/pointer-capture-applet.c:563
+#: ../src/pointer-capture-applet.c:530
 msgid "Pointer Capture"
 msgstr "Erakuslearen kaptura"
 
@@ -176,8 +176,10 @@ msgid "Button style"
 msgstr "Botoi-estiloa"
 
 #: ../data/mousetweaks.schemas.in.h:3
-msgid "Button style in click type window (\"0\" = Text, \"1\" = Icon, \"2\" = Both)"
-msgstr "Botoi-estiloa klik motaren leihoan (\"0\"=testua, \"1\"=ikonoa, \"2\"=biak)"
+msgid ""
+"Button style in click type window (\"0\" = Text, \"1\" = Icon, \"2\" = Both)"
+msgstr ""
+"Botoi-estiloa klik motaren leihoan (\"0\"=testua, \"1\"=ikonoa, \"2\"=biak)"
 
 #: ../data/mousetweaks.schemas.in.h:4
 msgid ""
@@ -231,7 +233,7 @@ msgstr "Klik-tenporizatuaren denbora"
 msgid "Enable secondary click"
 msgstr "Gaitu 2. mailako klik-a"
 
-#: ../data/mousetweaks.schemas.in.h:14 ../src/mt-main.c:871
+#: ../data/mousetweaks.schemas.in.h:14 ../src/mt-main.c:809
 msgid "Enable simulated secondary click"
 msgstr "Gaitu simulatutako 2. mailako klik-a"
 
@@ -396,97 +398,93 @@ msgstr ""
 msgid "Width of the capture area in pixels."
 msgstr "Kaptura-arearen zabalera (pixeletan)"
 
-#: ../src/mt-main.c:774
-msgid "Assistive Technology Support is not Enabled"
-msgstr "Laguntza-teknologia euskarria ez dago gaituta"
-
-#: ../src/mt-main.c:775
-msgid ""
-"Mousetweaks requires assistive technologies to be enabled in your session.\n"
-"\n"
-"To enable support for assistive technologies and restart your session, press "
-"\"Enable and Log Out\"."
-msgstr ""
-"MouseTweaks-ek laguntza-teknologia behar du zure saioan gaitua izateko.\n"
-"\n"
-"Laguntza-teknologiaren euskarria gaitzeko eta saioa berrabiarazteko, sakatu "
-"\"Gaitu eta amaitu saioa\"."
-
-#: ../src/mt-main.c:873
+#: ../src/mt-main.c:811
 msgid "Time to wait before a dwell click"
 msgstr "Denbora klik-tenporizatua landu aurretik"
 
-#: ../src/mt-main.c:875
+#: ../src/mt-main.c:813
 msgid "Time to wait before a simulated secondary click"
 msgstr "Denbora simulatutako 2. mailako klik-a landu aurretik"
 
-#: ../src/mt-main.c:877
+#: ../src/mt-main.c:815
 msgid "Set the active dwell mode"
 msgstr "Ezarri tenporizazioaren modu aktiboa"
 
-#: ../src/mt-main.c:879
+#: ../src/mt-main.c:817
 msgid "Show a click-type window"
 msgstr "Erakutsi klik motaren leihoa"
 
-#: ../src/mt-main.c:881
+#: ../src/mt-main.c:819
 msgid "Click-type window X position"
 msgstr "Klik motaren leihoaren x posizioa"
 
-#: ../src/mt-main.c:883
+#: ../src/mt-main.c:821
 msgid "Click-type window Y position"
 msgstr "Klik motaren leihoaren x posizioa"
 
-#: ../src/mt-main.c:885
+#: ../src/mt-main.c:823
 msgid "Ignore small pointer movements"
 msgstr "Ez ikusi egin erakuslearen mugimendu txikiei"
 
-#: ../src/mt-main.c:887
+#: ../src/mt-main.c:825
 msgid "Shut down mousetweaks"
 msgstr "Itzali 'mousetweaks'"
 
-#: ../src/mt-main.c:889
+#: ../src/mt-main.c:827
 msgid "Disable cursor animations"
 msgstr "Desgaitu kurtsorearen animazioak"
 
-#: ../src/mt-main.c:891
+#: ../src/mt-main.c:829
 msgid "Start mousetweaks as a daemon"
 msgstr "Abiarazi mousetweaks daemon gisa"
 
-#: ../src/mt-main.c:893
+#: ../src/mt-main.c:831
 msgid "Start mousetweaks in login mode"
 msgstr "Abiarazi mousetweaks saio-hasierako moduan"
 
 #. parse
-#: ../src/mt-main.c:911
+#: ../src/mt-main.c:851
 msgid "- GNOME mouse accessibility daemon"
 msgstr "- GNOMEko saguaren erabilgarritasunaren daemon-a"
 
-#: ../src/mt-common.c:30
+#: ../src/mt-common.c:31
 msgid "Failed to Display Help"
 msgstr "Huts egin du laguntza bistaratzean"
 
-#: ../src/mt-common.c:66
+#: ../src/mt-common.c:70
 msgid "Enable and Log Out"
 msgstr "Gaitu eta amaitu saioa"
 
-#: ../src/pointer-capture-applet.c:213
-msgid "Locked"
-msgstr "Blokeatuta"
-
-#. l10n: the first letter of 'Locked'
-#: ../src/pointer-capture-applet.c:216
-msgid "L"
-msgstr "B"
-
-#: ../src/pointer-capture-applet.c:640
+#: ../src/pointer-capture-applet.c:68
 msgid "Capture area"
 msgstr "Kapturatu area"
 
-#: ../src/pointer-capture-applet.c:641
+#: ../src/pointer-capture-applet.c:69
 msgid "Temporarily lock the mouse pointer"
 msgstr "Blokeatu saguaren erakuslea aldi baterako"
 
-#: ../src/dwell-click-applet.c:334
+#: ../src/pointer-capture-applet.c:596
+msgid "Locked"
+msgstr "Blokeatuta"
+
+#: ../src/dwell-click-applet.c:475
 msgid "Failed to Launch Mouse Preferences"
 msgstr "Huts egin du saguaren hobespenak abiaraztean"
 
+#~ msgid "Assistive Technology Support is not Enabled"
+#~ msgstr "Laguntza-teknologia euskarria ez dago gaituta"
+
+#~ msgid ""
+#~ "Mousetweaks requires assistive technologies to be enabled in your "
+#~ "session.\n"
+#~ "\n"
+#~ "To enable support for assistive technologies and restart your session, "
+#~ "press \"Enable and Log Out\"."
+#~ msgstr ""
+#~ "MouseTweaks-ek laguntza-teknologia behar du zure saioan gaitua izateko.\n"
+#~ "\n"
+#~ "Laguntza-teknologiaren euskarria gaitzeko eta saioa berrabiarazteko, "
+#~ "sakatu \"Gaitu eta amaitu saioa\"."
+
+#~ msgid "L"
+#~ msgstr "B"
