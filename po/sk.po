@@ -1,7 +1,6 @@
 # Slovak translation for mousetweaks.
 # Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the mousetweaks package.
-# Pavol Klačanský <pavol@klacansky.com>, 2009, 2010.
 # Roman Mátyus <romanmatyus@gmail.com>, 2009, 2010.
 #
 msgid ""
@@ -9,8 +8,8 @@ msgstr ""
 "Project-Id-Version: mousetweaks\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=mousetweaks&component=general\n"
-"POT-Creation-Date: 2010-07-18 16:32+0000\n"
-"PO-Revision-Date: 2010-07-19 22:38+0200\n"
+"POT-Creation-Date: 2010-10-11 06:40+0000\n"
+"PO-Revision-Date: 2010-10-25 21:56+0200\n"
 "Last-Translator: Roman Mátyus <romanmatyus@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +66,6 @@ msgstr ""
 msgid "C_trl"
 msgstr "C_trl"
 
-# roman: kurzora -> kurzora (podla jednej učiteľky SJ)
 #: ../data/pointer-capture-applet.ui.h:5
 msgid "Capture Pointer"
 msgstr "Zachytenie kurzora"
@@ -427,23 +425,13 @@ msgstr "Nastaviť aktívny režim kliknutia zotrvaním"
 msgid "Show a click-type window"
 msgstr "Zobraziť okno typov kliknutí"
 
-# korektor: znie to zavádzajúco, skôr "Pozícia x okna"
-# roman: OK - nebolo by lepšie "Horizontálna pozícia okna"?
-# korektor: asi aj bolo, ale neviem v akom význame je to použité
-# roman: Chcel som to otestovať, ale stále mi zamrzol PC. Mám to ponechať alebo zmeniť?
-# korektor: zmenil som, uvidime co na to Marcel
 #: ../src/mt-main.c:819
 msgid "Click-type window X position"
 msgstr "Horizontálna pozícia okna typov kliknutí"
 
-# korektor: znie to zavádzajúco, skôr "Pozícia x okna"
-# roman: OK - nebolo by lepšie "Horizontálna pozícia okna"?
-# korektor: asi aj bolo, ale neviem v akom význame je to použité
-# roman: Chcel som to otestovať, ale stále mi zamrzol PC. Mám to ponechať alebo zmeniť?
-# korektor: zmenil som, uvidime co na to Marcel
 #: ../src/mt-main.c:821
 msgid "Click-type window Y position"
-msgstr "Horizontálna pozícia okna typov kliknutí"
+msgstr "Vertikálna pozícia okna typov kliknutí"
 
 #: ../src/mt-main.c:823
 msgid "Ignore small pointer movements"
@@ -458,21 +446,17 @@ msgid "Disable cursor animations"
 msgstr "Zakázať animácie kurzora"
 
 #: ../src/mt-main.c:829
-#, fuzzy
-#| msgid "- GNOME mousetweaks daemon"
 msgid "Start mousetweaks as a daemon"
-msgstr "- Démon GNOME mousetweaks"
+msgstr "Spustiť mousetweaks ako démona"
 
 #: ../src/mt-main.c:831
 msgid "Start mousetweaks in login mode"
-msgstr ""
+msgstr "Spustiť mousetweaks v prihlasovacom režime"
 
 #. parse
 #: ../src/mt-main.c:851
-#, fuzzy
-#| msgid "- GNOME mousetweaks daemon"
 msgid "- GNOME mouse accessibility daemon"
-msgstr "- Démon GNOME mousetweaks"
+msgstr "- GNOME démon prístupnosti myši"
 
 #: ../src/mt-common.c:31
 msgid "Failed to Display Help"
@@ -498,6 +482,26 @@ msgstr "Uzamknuté"
 msgid "Failed to Launch Mouse Preferences"
 msgstr "Zlyhalo spustenie Predvolieb myši"
 
+#, fuzzy
+#~| msgid "Click Type Window"
+#~ msgid "Click type window style"
+#~ msgstr "Okno typov kliknutí"
+
+#, fuzzy
+#~| msgid "Mouse _button:"
+#~ msgid "Mouse button"
+#~ msgstr "_Tlačidlo myši:"
+
+#, fuzzy
+#~| msgid "Mouse button used to capture the pointer"
+#~ msgid "Mouse button used to capture or release the pointer."
+#~ msgstr "Tlačidlo myši použité k zachyteniu kurzora"
+
+#, fuzzy
+#~| msgid "Pointer Capture"
+#~ msgid "Pointer Capture Applet"
+#~ msgstr "Zachytenie kurzora"
+
 #~ msgid "Assistive Technology Support is not Enabled"
 #~ msgstr "Nie je povolená asistenčná technológia"
 
@@ -515,17 +519,3 @@ msgstr "Zlyhalo spustenie Predvolieb myši"
 
 #~ msgid "Dwell mode to use"
 #~ msgstr "Režim kliknutia držaním, ktorý sa má použiť"
-
-# korektor: znie to zavádzajúco, skôr "Pozícia y okna"
-# roman: OK - nebolo by lepšie "Vertikálna pozícia okna"?
-# korektor: asi aj bolo, ale neviem v akom význame je to použité
-# roman: Chcel som to otestovať, ale stále mi zamrzol PC. Mám to ponechať alebo zmeniť?
-# korektor: zmenil som, uvidime co na to Marcel
-#~ msgid "Window y position"
-#~ msgstr "Vertikálna pozícia okna"
-
-#~ msgid "Show elapsed time as cursor overlay"
-#~ msgstr "Zobraziť uplynulý čas ako prekrytie kurzora"
-
-#~ msgid "L"
-#~ msgstr "U"
