@@ -8,8 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mousetweaks\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=mousetweaks&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-18 17:26+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=mousetweaks&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-05-02 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Gheyret Kenji<gheyret@yahoo.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -112,7 +113,6 @@ msgid "Horizontal"
 msgstr "توغرا"
 
 #: ../data/mousetweaks.ui.h:7
-#| msgid "Double Click"
 msgid "Hover Click"
 msgstr "لەيلىتىپ چەك"
 
