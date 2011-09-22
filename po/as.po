@@ -2,363 +2,526 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Amitakhya Phukan <aphukan@fedoraproject.org>, 2009.
+# Nilamdyuti Goswami <ngoswami@redhat.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: as\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=mousetweaks&component=general\n"
-"POT-Creation-Date: 2009-03-01 22:44+0000\n"
-"PO-Revision-Date: 2009-03-16 10:23+0530\n"
-"Last-Translator: Amitakhya Phukan <aphukan@fedoraproject.org>\n"
-"Language-Team: Assamese <fedora-trans-as@redhat.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=mousetweaks&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-07-25 20:05+0000\n"
+"PO-Revision-Date: 2011-04-01 13:00+0000\n"
+"Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
+"Language-Team: Assamese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../data/DwellClick_Factory.server.in.in.h:1 ../src/dwell-click-applet.c:561
-msgid "Dwell Click"
-msgstr "Dwell ক্লিক"
-
-#: ../data/DwellClick_Factory.server.in.in.h:2
-msgid "Select dwelling click type"
-msgstr "dwell ক্লিকৰ ধৰন নিৰ্বাচন কৰক"
-
-#: ../data/PointerCapture_Factory.server.in.in.h:1
-msgid "Area to lock the pointer"
-msgstr "পইন্টাৰ আটক কৰাৰ অঞ্চল"
-
-#: ../data/PointerCapture_Factory.server.in.in.h:2
-#: ../src/pointer-capture-applet.c:549
-msgid "Pointer Capture"
-msgstr "চিহ্নক"
-
-#: ../data/DwellClick.xml.h:1 ../data/PointerCapture.xml.h:1
-msgid "_About"
-msgstr "বিষয়ে (_A)"
-
-#: ../data/DwellClick.xml.h:2 ../data/PointerCapture.xml.h:2
-msgid "_Help"
-msgstr "সাহায্য (_H)"
-
-#: ../data/DwellClick.xml.h:3 ../data/PointerCapture.xml.h:3
-msgid "_Preferences"
-msgstr "পছন্দ (_P)"
-
-#: ../data/mousetweaks.schemas.in.h:1
-msgid "Animate cursor"
-msgstr "কাৰ্ছাৰ"
-
-#: ../data/mousetweaks.schemas.in.h:2
-msgid "Button style"
-msgstr "বুটামৰ বিন্যাস"
-
-#: ../data/mousetweaks.schemas.in.h:3
+#: ../data/dwell-click-applet.ui.h:1
 msgid ""
-"Button style in click type window (\"0\" = Text, \"1\" = Icon, \"2\" = Both)"
-msgstr "ডাবুল ক্লিক কৰাৰ দিশ (\"0\" = Text, \"1\" = Icon, \"2\" = Both)"
-
-#: ../data/mousetweaks.schemas.in.h:4
-msgid ""
-"Direction to perform a double click (\"0\" = Left, \"1\" = Right, \"2\" = "
-"Up, \"3\" = Down)"
+"Applet to select different dwell-click types.\n"
+"Part of Mousetweaks"
 msgstr ""
-"ডাবুল ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = "
-"Up, \"3\" = Down)"
+"বিভিন্ন ধৰনৰ dwell ক্লিক নিৰ্বাচনৰ এপ্লেট।\n"
+"Mousetweaks ৰ অংশ"
 
-#: ../data/mousetweaks.schemas.in.h:5
-msgid ""
-"Direction to perform a drag click (\"0\" = Left, \"1\" = Right, \"2\" = Up, "
-"\"3\" = Down)"
-msgstr ""
-"ড্ৰেগ ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = Up, "
-"\"3\" = Down)"
+#: ../data/dwell-click-applet.ui.h:3
+msgid "Click Type Window"
+msgstr "ক্লিকৰ ধৰনৰ উইন্ডো"
 
-#: ../data/mousetweaks.schemas.in.h:6
-msgid ""
-"Direction to perform a secondary click (\"0\" = Left, \"1\" = Right, \"2\" = "
-"Up, \"3\" = Down)"
-msgstr ""
-"ডাবুল ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = "
-"Up, \"3\" = Down)"
+#: ../data/dwell-click-applet.ui.h:4 ../data/mousetweaks.ui.h:2
+msgid "Double Click"
+msgstr "দুটা ক্লিক"
 
-#: ../data/mousetweaks.schemas.in.h:7
-msgid ""
-"Direction to perform a single click (\"0\" = Left, \"1\" = Right, \"2\" = "
-"Up, \"3\" = Down)"
-msgstr ""
-"চিঙ্গল ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = "
-"Up, \"3\" = Down)"
+#: ../data/dwell-click-applet.ui.h:5
+msgid "Drag Click"
+msgstr "ড্ৰেগ ক্লিক"
 
-#: ../data/mousetweaks.schemas.in.h:8
-msgid "Distance in pixels before movement will be recognized"
-msgstr "ড্ৰ্যাগ আৰম্ভ হোৱাৰ আগৰ অবধি মধ্যবৰ্তী দূৰত্ব।"
-
-#: ../data/mousetweaks.schemas.in.h:9
-msgid "Dwell click mode"
-msgstr "Dwell ক্লিক মোড"
-
-#: ../data/mousetweaks.schemas.in.h:10
-msgid "Dwell click mode (\"0\" = Gesture mode, \"1\" = Window mode)"
-msgstr "Dwell ক্লিক ধৰণ (\"0\" = Gesture mode, \"1\" = Window mode)"
-
-#: ../data/mousetweaks.schemas.in.h:11
-msgid "Dwell click time"
-msgstr "Dwell ক্লিকেৰ সময়"
-
-#: ../data/mousetweaks.schemas.in.h:12 ../src/mt-main.c:824
+#: ../data/dwell-click-applet.ui.h:6 ../src/mt-main.c:598
 msgid "Enable dwell click"
-msgstr "dwell ক্লিক সক্ৰিয় কৰক"
+msgstr "dwell ক্লিক সামৰ্থবান কৰক"
 
-#: ../data/mousetweaks.schemas.in.h:13
-msgid "Enable secondary click"
-msgstr "দ্বিতীয় ক্লিক সক্ৰিয় কৰক"
+#: ../data/dwell-click-applet.ui.h:7
+msgid "Right Click"
+msgstr "সোঁ ক্লিক"
 
-#: ../data/mousetweaks.schemas.in.h:14 ../src/mt-main.c:826
-msgid "Enable simulated secondary click"
-msgstr "দ্বিতীয় ক্লিক সক্ৰিয় কৰক"
+#: ../data/dwell-click-applet.ui.h:8 ../data/mousetweaks.ui.h:11
+msgid "Single Click"
+msgstr "এটা ক্লিক"
 
-#: ../data/mousetweaks.schemas.in.h:15
-msgid "Gesture double click"
-msgstr "দুইবাৰ ক্লিক"
+#: ../data/pointer-capture-applet.ui.h:1
+msgid ""
+"Area to lock the pointer on the panel.\n"
+"Part of Mousetweaks"
+msgstr ""
+"পেনেলত পোইন্টাৰ লক কৰাৰ স্থান।\n"
+"Mousetweaks ৰ অংশ"
 
-#: ../data/mousetweaks.schemas.in.h:16
-msgid "Gesture drag click"
-msgstr "এবাৰ ক্লিক"
+#: ../data/pointer-capture-applet.ui.h:3
+msgid "C_trl"
+msgstr "Ctrl (_t)"
 
-#: ../data/mousetweaks.schemas.in.h:17
-msgid "Gesture secondary click"
-msgstr "দ্বিতীয় ক্লিক সক্ৰিয় কৰক"
+#: ../data/pointer-capture-applet.ui.h:4
+msgid "Capture and Release Controls"
+msgstr "নিয়ন্ত্ৰণসমূহ ধৰক আৰু এৰক"
 
-#: ../data/mousetweaks.schemas.in.h:18
-msgid "Gesture single click"
-msgstr "এবাৰ ক্লিক"
+#: ../data/pointer-capture-applet.ui.h:5
+msgid "Keyboard modifier:"
+msgstr "কিবৰ্ড পৰিৱৰ্তক:"
 
-#: ../data/mousetweaks.schemas.in.h:19
-msgid "Movement threshold"
-msgstr "গতি"
+#: ../data/pointer-capture-applet.ui.h:6
+msgid "Pointer Capture Preferences"
+msgstr "পোইন্টাৰ কৰগত পছন্দসমূহ"
 
-#: ../data/mousetweaks.schemas.in.h:20
-msgid "Secondary click time"
-msgstr "দ্বিতীয় ক্লিক সক্ৰিয় কৰক"
+#: ../data/pointer-capture-applet.ui.h:7
+msgid "Selecting Button 0 will capture the pointer immediately"
+msgstr "বুটাম ০ নিৰ্বাচন কৰিলে পোইন্টাৰক তৎক্ষনাত কৰগত কৰা হ'ব"
 
-#: ../data/mousetweaks.schemas.in.h:21 ../src/mt-main.c:834
-msgid "Show click type window"
-msgstr "উইন্ডো প্ৰদৰ্শন কৰা হ'ব"
+#: ../data/pointer-capture-applet.ui.h:8
+msgid "Size of the Capture Area"
+msgstr "কৰগত কৰা স্থানৰ আকাৰ"
 
-#: ../data/mousetweaks.schemas.in.h:22
-msgid "Show elapsed time as cursor overlay."
-msgstr "ব্যস্ত হিসাবে সময় প্ৰদৰ্শন কৰা হ'ব"
+#: ../data/pointer-capture-applet.ui.h:9
+msgid "_Alt"
+msgstr "Alt (_A)"
 
-#: ../data/mousetweaks.schemas.in.h:23
-msgid "Time in seconds before a click is triggered"
-msgstr "ছেকেণ্ডসহ সময় প্ৰদৰ্শন কৰা হ'ব"
+#: ../data/pointer-capture-applet.ui.h:10
+msgid "_Mouse button:"
+msgstr "মাউছৰ বুটাম (_M): "
 
-#: ../data/mousetweaks.schemas.in.h:24
-msgid "Time in seconds before a secondary click is triggered"
-msgstr "দ্বিতীয় ক্লিক সক্ৰিয় কৰক"
+#: ../data/pointer-capture-applet.ui.h:11
+msgid "_Shift"
+msgstr "Shift (_S)"
 
-#: ../data/pointer-capture-applet.schemas.in.h:1
-msgid "Capture pointer only if Alt is pressed"
-msgstr "Alt হেঁচা হ'লেহে পইন্টাৰ ধৰিব"
+#: ../data/pointer-capture-applet.ui.h:12
+msgid "_Width:"
+msgstr "প্ৰস্থ: (_W)"
 
-#: ../data/pointer-capture-applet.schemas.in.h:2
-msgid "Capture pointer only if Ctrl is pressed"
-msgstr "Ctrl হেঁচা হ'লেহে পইন্টাৰ ধৰিব"
+#: ../data/pointer-capture-applet.ui.h:13
+msgid "pixels"
+msgstr "পিক্সেলসমূহ"
 
-#: ../data/pointer-capture-applet.schemas.in.h:3
-msgid "Capture pointer only if Shift is pressed"
-msgstr "Shift হেঁচা হ'লেহে পইন্টাৰ ধৰিব"
+#: ../data/mousetweaks.ui.h:1
+msgid "Button Style"
+msgstr "বুটামৰ শৈলী"
 
-#: ../data/pointer-capture-applet.schemas.in.h:4
-msgid "Mouse button used to capture the pointer"
-msgstr "পইন্টাৰ ধৰিবলৈ মাউছ বুটাম"
+#. 'Drag' like in a Drag and Drop operation
+#: ../data/mousetweaks.ui.h:4
+msgid "Drag"
+msgstr "ড্ৰেগ কৰক "
 
-#: ../data/pointer-capture-applet.schemas.in.h:5
-msgid "Mouse button used to release the pointer"
-msgstr "পইন্টাৰ এৰিবলৈ মাউছ বুটাম"
+#. Buttons are arranged from left to right in the layout
+#: ../data/mousetweaks.ui.h:6
+msgid "Horizontal"
+msgstr "আনুভূমিক"
 
-#: ../data/pointer-capture-applet.schemas.in.h:6
-msgid "Release pointer only if Alt is pressed"
-msgstr "Alt হেঁচা হ'লেহে পইন্টাৰ এৰিব"
+#: ../data/mousetweaks.ui.h:7
+msgid "Hover Click"
+msgstr "হভাৰ ক্লিক"
 
-#: ../data/pointer-capture-applet.schemas.in.h:7
-msgid "Release pointer only if Ctrl is pressed"
-msgstr "Ctrl হেঁচা হ'লেহে পইন্টাৰ এৰিব"
+#: ../data/mousetweaks.ui.h:8
+msgid "Icons only"
+msgstr "কেৱল আইকনসমূহ"
 
-#: ../data/pointer-capture-applet.schemas.in.h:8
-msgid "Release pointer only if Shift is pressed"
-msgstr "Shift হেঁচা হ'লেহে পইন্টাৰ এৰিব"
+#: ../data/mousetweaks.ui.h:9
+msgid "Orientation"
+msgstr "দিশ"
 
-#: ../data/pointer-capture-applet.schemas.in.h:9
+#: ../data/mousetweaks.ui.h:10
+msgid "Secondary Click"
+msgstr "দ্বিতীয় ক্লিক"
+
+#: ../data/mousetweaks.ui.h:12
+msgid "Text and Icons"
+msgstr "লিখনী আৰু আইকনসমূহ"
+
+#: ../data/mousetweaks.ui.h:13
+msgid "Text only"
+msgstr "কেৱল লিখনী"
+
+#. Buttons are arranged from top to bottom in the layout
+#: ../data/mousetweaks.ui.h:15
+msgid "Vertical"
+msgstr "উলম্ব"
+
+#: ../data/org.gnome.applets.DwellClickApplet.panel-applet.in.in.h:1
+msgid "Control your desktop without using mouse buttons"
+msgstr "মাউছ বুটামসমূহ ব্যৱহাৰ নকৰাকে আপোনাৰ ডেস্কটপ নিয়ন্ত্ৰণ কৰক"
+
+#: ../data/org.gnome.applets.DwellClickApplet.panel-applet.in.in.h:2
+#: ../src/dwell-click-applet.c:584
+msgid "Dwell Click Applet"
+msgstr "Dwell ক্লিক এপ্লেট"
+
+#: ../data/org.gnome.applets.PointerCaptureApplet.panel-applet.in.in.h:1
+msgid "Area to lock the pointer"
+msgstr "পোইন্টাৰ কৰগত কৰাৰ স্থান"
+
+#: ../data/org.gnome.applets.PointerCaptureApplet.panel-applet.in.in.h:2
+#: ../src/pointer-capture-applet.c:439
+msgid "Pointer Capture Applet"
+msgstr "পোইন্টাৰ কৰগত এপ্লেট"
+
+#: ../data/org.gnome.mousetweaks.gschema.xml.in.h:1
+msgid "Button style of the click-type window."
+msgstr "ক্লিক-ধৰণ উইন্ডোৰ বুটাম শৈলী।"
+
+#: ../data/org.gnome.mousetweaks.gschema.xml.in.h:2 ../src/mt-main.c:612
+msgid "Click-type window geometry"
+msgstr "ক্লিক-ধৰণ উইন্ডো জ্যামিতি"
+
+#: ../data/org.gnome.mousetweaks.gschema.xml.in.h:3
+msgid "Click-type window orientation"
+msgstr "ক্লিক-ধৰণ উইন্ডো দিশ"
+
+#: ../data/org.gnome.mousetweaks.gschema.xml.in.h:4
+msgid "Click-type window style"
+msgstr "ক্লিকৰ-ধৰণ উইন্ডো শৈলী"
+
+#: ../data/org.gnome.mousetweaks.gschema.xml.in.h:5
+msgid "Orientation of the click-type window."
+msgstr "ক্লিক-ধৰণ উইন্ডোৰ দিশ।"
+
+#: ../data/org.gnome.mousetweaks.gschema.xml.in.h:6
+msgid ""
+"Size and position of the click-type window. The format is a standard X "
+"Window System geometry string."
+msgstr ""
+"ক্লিক-ধৰণ উইন্ডোৰ আকাৰ আৰু অৱস্থান। বিন্যাসটো এটা প্ৰামানিক X উইন্ডো চিস্টেম জ্যামিতি "
+"স্ট্ৰিং।"
+
+#: ../data/org.gnome.pointer-capture.gschema.xml.in.h:1
+msgid "\"Alt\" keyboard modifier"
+msgstr "\"Alt\" কিবৰ্ড পৰিৱৰ্তক"
+
+#: ../data/org.gnome.pointer-capture.gschema.xml.in.h:2
+msgid "\"Control\" keyboard modifier"
+msgstr "\"Control\" কিবৰ্ড পৰিৱৰ্তক"
+
+#: ../data/org.gnome.pointer-capture.gschema.xml.in.h:3
+msgid "\"Shift\" keyboard modifier"
+msgstr "\"Shift\" কিবৰ্ড পৰিৱৰ্তক"
+
+#: ../data/org.gnome.pointer-capture.gschema.xml.in.h:4
+msgid "Mouse button"
+msgstr "মাউছৰ বুটাম"
+
+#: ../data/org.gnome.pointer-capture.gschema.xml.in.h:5
+msgid "Mouse button used to capture or release the pointer."
+msgstr "পোইন্টাৰ এৰিবলৈ বা ধৰিবলৈ ব্যৱহাৰ কৰা মাউছ বুটাম।"
+
+#: ../data/org.gnome.pointer-capture.gschema.xml.in.h:6
 msgid "Size of capture area"
-msgstr "চিহ্নক"
+msgstr "কৰগত কৰা স্থানৰ আকাৰ"
 
-#: ../data/pointer-capture-applet.schemas.in.h:10
-msgid ""
-"This mouse button must be pressed to release the pointer from the capture "
-"area. Valid values are \"1\" for left button, \"2\" for middle button, and "
-"\"3\" for right button."
-msgstr ""
-"This mouse button must be pressed to release the pointer from the capture "
-"area. Valid values are \"1\" for left button, \"2\" for middle button, and "
-"\"3\" for right button."
-
-#: ../data/pointer-capture-applet.schemas.in.h:11
-msgid ""
-"This mouse button must be pressed while the pointer is over the capture area "
-"in order to capture the pointer. Valid values are \"0\" if no button is "
-"needed, \"1\" for left button, \"2\" for middle button, and \"3\" for right "
-"button."
-msgstr ""
-"This mouse button must be pressed while the pointer is over the capture area "
-"in order to capture the pointer. Valid values are \"0\" if no button is "
-"needed, \"1\" for left button, \"2\" for middle button, and \"3\" for right "
-"button."
-
-#: ../data/pointer-capture-applet.schemas.in.h:12
-msgid ""
-"Whether the Alt key must be pressed for the pointer to be captured while "
-"it's over the capture area. If this option is set as true, and a mouse "
-"button is set in the \"capture_button\" key, then the Alt key must be "
-"pressed while the mouse button is pressed."
-msgstr ""
-"Whether the Alt key must be pressed for the pointer to be captured while "
-"it's over the capture area. If this option is set as true, and a mouse "
-"button is set in the \"capture_button\" key, then the Alt key must be "
-"pressed while the mouse button is pressed."
-
-#: ../data/pointer-capture-applet.schemas.in.h:13
-msgid ""
-"Whether the Alt key must be pressed with the mouse button set in "
-"\"release_button\" for the pointer to be released from the capture area."
-msgstr ""
-"Whether the Alt key must be pressed with the mouse button set in "
-"\"release_button\" for the pointer to be released from the capture area."
-
-#: ../data/pointer-capture-applet.schemas.in.h:14
-msgid ""
-"Whether the Ctrl key must be pressed for the pointer to be captured while "
-"it's over the capture area. If this option is set as true, and a mouse "
-"button is set in the \"capture_button\" key, then the Ctrl key must be "
-"pressed while the mouse button is pressed."
-msgstr ""
-"Whether the Ctrl key must be pressed for the pointer to be captured while "
-"it's over the capture area. If this option is set as true, and a mouse "
-"button is set in the \"capture_button\" key, then the Ctrl key must be "
-"pressed while the mouse button is pressed."
-
-#: ../data/pointer-capture-applet.schemas.in.h:15
-msgid ""
-"Whether the Ctrl key must be pressed with the mouse button set in "
-"\"release_button\" for the pointer to be released from the capture area."
-msgstr ""
-"Whether the Ctrl key must be pressed with the mouse button set in "
-"\"release_button\" for the pointer to be released from the capture area."
-
-#: ../data/pointer-capture-applet.schemas.in.h:16
-msgid ""
-"Whether the Shift key must be pressed for the pointer to be captured while "
-"it's over the capture area. If this option is set as true, and a mouse "
-"button is set in the \"capture_button\" key, then the Shift key must be "
-"pressed while the mouse button is pressed."
-msgstr ""
-"Whether the Shift key must be pressed for the pointer to be captured while "
-"it's over the capture area. If this option is set as true, and a mouse "
-"button is set in the \"capture_button\" key, then the Shift key must be "
-"pressed while the mouse button is pressed."
-
-#: ../data/pointer-capture-applet.schemas.in.h:17
-msgid ""
-"Whether the Shift key must be pressed with the mouse button set in "
-"\"release_button\" for the pointer to be released from the capture area."
-msgstr ""
-"Whether the Shift key must be pressed with the mouse button set in "
-"\"release_button\" for the pointer to be released from the capture area."
-
-#: ../data/pointer-capture-applet.schemas.in.h:18
+#: ../data/org.gnome.pointer-capture.gschema.xml.in.h:7
 msgid "Width of the capture area in pixels."
-msgstr "মাৰ্জিনৰ প্ৰস্থ পিক্সেলত"
+msgstr "পিক্সেলত কৰগত কৰা স্থানৰ প্ৰস্থ"
 
-#: ../src/mt-main.c:720
-msgid "Assistive Technology Support is not Enabled"
-msgstr "Assistive Technology Support নিষ্ক্ৰিয়"
+#: ../src/mt-main.c:600
+msgid "Enable simulated secondary click"
+msgstr "নাটকীয় দ্বিতীয় ক্লিক সামৰ্থবান কৰক"
 
-#: ../src/mt-main.c:721
-msgid ""
-"Mousetweaks requires assistive technologies to be enabled in your session.\n"
-"\n"
-"To enable support for assistive technologies and restart your session, press "
-"\"Enable and Log Out\"."
-msgstr ""
-"Mousetweaks ক assistive technologies ৰ সক্ৰিয় হোৱাৰ প্ৰয়োজন ।\n"
-"\n"
-"assistive technologies ৰ সমৰ্থন সক্ৰিয় কৰিবলৈ আৰু অধইবেশন পুনৰাৰম্ভ কৰিবলৈ, "
-"\"Enable and Log Out\" টিপক ।"
-
-#: ../src/mt-main.c:828
+#: ../src/mt-main.c:602
 msgid "Time to wait before a dwell click"
-msgstr "Dwell ক্লিক"
+msgstr "এটা Dwell ক্লিকৰ আগত অপেক্ষা কৰিব লগিয়া সময়"
 
-#: ../src/mt-main.c:830
+#: ../src/mt-main.c:604
 msgid "Time to wait before a simulated secondary click"
-msgstr "দ্বিতীয় ক্লিক সক্ৰিয় কৰক"
+msgstr "এটা নাটকীয় দ্বিতীয় ক্লিকৰ আগত অপেক্ষা কৰিব লগিয়া সময়"
 
-#: ../src/mt-main.c:832
-msgid "Dwell mode to use"
-msgstr "ব্যৱহাৰৰ বাবে Dwell মোড"
+#: ../src/mt-main.c:606
+msgid "Set the active dwell mode"
+msgstr "সক্ৰিয় dwell অৱস্থা সংহতি কৰক"
 
-#: ../src/mt-main.c:836
-msgid "Window x position"
-msgstr "Window x position"
+#: ../src/mt-main.c:608
+msgid "Show a click-type window"
+msgstr "এটা ক্লিক-ধৰণ উইন্ডো দেখুৱাওক"
 
-#: ../src/mt-main.c:838
-msgid "Window y position"
-msgstr "Window y position"
-
-#: ../src/mt-main.c:840
+#: ../src/mt-main.c:610
 msgid "Ignore small pointer movements"
-msgstr "চিহ্নক"
+msgstr "সৰু পোইন্টাৰ গতিবিধিসমূহ উপেক্ষা কৰক"
 
-#: ../src/mt-main.c:842
-msgid "Show elapsed time as cursor overlay"
-msgstr "ব্যস্ত হিসাবে সময় প্ৰদৰ্শন কৰা হ'ব"
-
-#: ../src/mt-main.c:844
+#: ../src/mt-main.c:614
 msgid "Shut down mousetweaks"
 msgstr "mousetweaks বন্ধ কৰক"
 
-#: ../src/mt-main.c:853
-msgid "- GNOME mousetweaks daemon"
-msgstr "- GNOME mousetweaks daemon"
+#: ../src/mt-main.c:616
+msgid "Start mousetweaks as a daemon"
+msgstr "mousetweaks -ক এটা ডিমন হিচাপে আৰম্ভ কৰক"
 
-#: ../src/mt-common.c:30
+#: ../src/mt-main.c:618
+msgid "Start mousetweaks in login mode"
+msgstr "mousetweaks -ক লগিন অৱস্থাত আৰম্ভ কৰক"
+
+#. parse
+#: ../src/mt-main.c:636
+msgid "- GNOME mouse accessibility daemon"
+msgstr "- GNOME মাউছ অভিগম ডিমন"
+
+#: ../src/mt-common.c:78
 msgid "Failed to Display Help"
-msgstr "সহায়িকা প্ৰদৰ্শনেৰ ব্যৰ্থ"
+msgstr "সহায় প্ৰদৰ্শনত ব্যৰ্থ"
 
-#: ../src/mt-common.c:66
-msgid "Enable and Log Out"
-msgstr "সক্ৰিয় কৰে লগ-আউট কৰক"
+#: ../src/pointer-capture-applet.c:83
+msgid "Capture area"
+msgstr "কৰগত স্থান"
 
-#: ../src/pointer-capture-applet.c:180
+#: ../src/pointer-capture-applet.c:84
+msgid "Temporarily lock the mouse pointer"
+msgstr "মাউছ পোইন্টাৰক অস্থায়ীভাৱে লক কৰক"
+
+#: ../src/pointer-capture-applet.c:179 ../src/dwell-click-applet.c:84
+msgid "_Preferences"
+msgstr "পছন্দসমূহ (_P)"
+
+#: ../src/pointer-capture-applet.c:181 ../src/dwell-click-applet.c:86
+msgid "_Help"
+msgstr "সহায় (_H)"
+
+#: ../src/pointer-capture-applet.c:183 ../src/dwell-click-applet.c:88
+msgid "_About"
+msgstr "বিষয়ে (_A)"
+
+#: ../src/pointer-capture-applet.c:490
 msgid "Locked"
 msgstr "লক কৰা"
 
-#. l10n: the first letter of 'Locked'
-#: ../src/pointer-capture-applet.c:183
-msgid "L"
-msgstr "L"
+#: ../src/dwell-click-applet.c:454
+msgid "Failed to Open the Universal Access Panel"
+msgstr "সাৰ্বভৈমক অভিগম পেনেল খুলিবলে ব্যৰ্থ"
 
-#: ../src/pointer-capture-applet.c:621
-msgid "Capture area"
-msgstr "চিহ্নক"
+#~ msgid "A_lt"
+#~ msgstr "A_lt"
 
-#: ../src/pointer-capture-applet.c:622
-msgid "Temporarily lock the mouse pointer"
-msgstr "পইন্টাৰ আটক কৰাৰ অঞ্চল"
+#~| msgid "Capture area"
+#~ msgid "Capture Pointer"
+#~ msgstr "পোইন্টাৰ কৰগত"
 
-#: ../src/dwell-click-applet.c:334
-msgid "Failed to Launch Mouse Preferences"
-msgstr "মাউস সম্পৰ্কিত পছন্দ"
+#~ msgid "Ct_rl"
+#~ msgstr "Ct_rl"
 
+#~ msgid "Modifier:"
+#~ msgstr "পৰিবৰ্তক:"
+
+#~ msgid "Mouse b_utton:"
+#~ msgstr "মাউছৰ বুটাম: (_u)"
+
+#~ msgid "Release Pointer"
+#~ msgstr "পোইন্টাৰ মুক্ত কৰক"
+
+#~ msgid "Sh_ift"
+#~ msgstr "Sh_ift"
+
+#~ msgid "Show Icons and Text"
+#~ msgstr "আইকন আৰু টেক্সট প্ৰদৰ্শন কৰা হ'ব"
+
+#~ msgid "Dwell Click"
+#~ msgstr "Dwell ক্লিক"
+
+#~ msgid "Select dwelling click type"
+#~ msgstr "dwell ক্লিকৰ ধৰন নিৰ্বাচন কৰক"
+
+#~ msgid "Animate cursor"
+#~ msgstr "কাৰ্ছাৰ"
+
+#~ msgid ""
+#~ "Button style in click type window (\"0\" = Text, \"1\" = Icon, \"2\" = "
+#~ "Both)"
+#~ msgstr "ডাবুল ক্লিক কৰাৰ দিশ (\"0\" = Text, \"1\" = Icon, \"2\" = Both)"
+
+#~ msgid ""
+#~ "Direction to perform a double click (\"0\" = Left, \"1\" = Right, \"2\" = "
+#~ "Up, \"3\" = Down)"
+#~ msgstr ""
+#~ "ডাবুল ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = Up, \"3\" = Down)"
+
+#~ msgid ""
+#~ "Direction to perform a drag click (\"0\" = Left, \"1\" = Right, \"2\" = "
+#~ "Up, \"3\" = Down)"
+#~ msgstr ""
+#~ "ড্ৰেগ ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = Up, \"3\" = Down)"
+
+#~ msgid ""
+#~ "Direction to perform a secondary click (\"0\" = Left, \"1\" = Right, \"2"
+#~ "\" = Up, \"3\" = Down)"
+#~ msgstr ""
+#~ "ডাবুল ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = Up, \"3\" = Down)"
+
+#~ msgid ""
+#~ "Direction to perform a single click (\"0\" = Left, \"1\" = Right, \"2\" = "
+#~ "Up, \"3\" = Down)"
+#~ msgstr ""
+#~ "চিঙ্গল ক্লিক কৰাৰ দিশ (\"0\" = Left, \"1\" = Right, \"2\" = Up, \"3\" = "
+#~ "Down)"
+
+#~ msgid "Distance in pixels before movement will be recognized"
+#~ msgstr "ড্ৰেগ আৰম্ভ হোৱাৰ আগৰ অবধি মধ্যবৰ্তী দূৰত্ব।"
+
+#~ msgid "Dwell click mode"
+#~ msgstr "Dwell ক্লিক মোড"
+
+#~ msgid "Dwell click mode (\"0\" = Gesture mode, \"1\" = Window mode)"
+#~ msgstr "Dwell ক্লিক ধৰণ (\"0\" = Gesture mode, \"1\" = Window mode)"
+
+#~ msgid "Dwell click time"
+#~ msgstr "Dwell ক্লিকৰ সময়"
+
+#~ msgid "Enable secondary click"
+#~ msgstr "দ্বিতীয় ক্লিক সামৰ্থবান কৰক"
+
+#~ msgid "Gesture double click"
+#~ msgstr "দুবাৰ ক্লিক"
+
+#~ msgid "Gesture drag click"
+#~ msgstr "এবাৰ ক্লিক"
+
+#~ msgid "Gesture secondary click"
+#~ msgstr "দ্বিতীয় ক্লিক সামৰ্থবান কৰক"
+
+#~ msgid "Gesture single click"
+#~ msgstr "এবাৰ ক্লিক"
+
+#~ msgid "Movement threshold"
+#~ msgstr "গতি"
+
+#~ msgid "Show elapsed time as cursor overlay."
+#~ msgstr "ব্যস্ত হিসাবে সময় প্ৰদৰ্শন কৰা হ'ব"
+
+#~ msgid "Time in seconds before a click is triggered"
+#~ msgstr "ছেকেণ্ডসহ সময় প্ৰদৰ্শন কৰা হ'ব"
+
+#~ msgid "Time in seconds before a secondary click is triggered"
+#~ msgstr "দ্বিতীয় ক্লিক সামৰ্থবান কৰক"
+
+#~ msgid "Capture pointer only if Alt is pressed"
+#~ msgstr "Alt হেঁচা হ'লেহে পোইন্টাৰ ধৰিব"
+
+#~ msgid "Capture pointer only if Ctrl is pressed"
+#~ msgstr "Ctrl হেঁচা হ'লেহে পোইন্টাৰ ধৰিব"
+
+#~ msgid "Capture pointer only if Shift is pressed"
+#~ msgstr "Shift হেঁচা হ'লেহে পোইন্টাৰ ধৰিব"
+
+#~ msgid "Mouse button used to release the pointer"
+#~ msgstr "পোইন্টাৰ এৰিবলৈ মাউছ বুটাম"
+
+#~ msgid "Release pointer only if Alt is pressed"
+#~ msgstr "Alt হেঁচা হ'লেহে পোইন্টাৰ এৰিব"
+
+#~ msgid "Release pointer only if Ctrl is pressed"
+#~ msgstr "Ctrl হেঁচা হ'লেহে পোইন্টাৰ এৰিব"
+
+#~ msgid "Release pointer only if Shift is pressed"
+#~ msgstr "Shift হেঁচা হ'লেহে পোইন্টাৰ এৰিব"
+
+#~ msgid ""
+#~ "This mouse button must be pressed to release the pointer from the capture "
+#~ "area. Valid values are \"1\" for left button, \"2\" for middle button, "
+#~ "and \"3\" for right button."
+#~ msgstr ""
+#~ "This mouse button must be pressed to release the pointer from the capture "
+#~ "area. Valid values are \"1\" for left button, \"2\" for middle button, "
+#~ "and \"3\" for right button."
+
+#~ msgid ""
+#~ "This mouse button must be pressed while the pointer is over the capture "
+#~ "area in order to capture the pointer. Valid values are \"0\" if no button "
+#~ "is needed, \"1\" for left button, \"2\" for middle button, and \"3\" for "
+#~ "right button."
+#~ msgstr ""
+#~ "This mouse button must be pressed while the pointer is over the capture "
+#~ "area in order to capture the pointer. Valid values are \"0\" if no button "
+#~ "is needed, \"1\" for left button, \"2\" for middle button, and \"3\" for "
+#~ "right button."
+
+#~ msgid ""
+#~ "Whether the Alt key must be pressed for the pointer to be captured while "
+#~ "it's over the capture area. If this option is set as true, and a mouse "
+#~ "button is set in the \"capture_button\" key, then the Alt key must be "
+#~ "pressed while the mouse button is pressed."
+#~ msgstr ""
+#~ "Whether the Alt key must be pressed for the pointer to be captured while "
+#~ "it's over the capture area. If this option is set as true, and a mouse "
+#~ "button is set in the \"capture_button\" key, then the Alt key must be "
+#~ "pressed while the mouse button is pressed."
+
+#~ msgid ""
+#~ "Whether the Alt key must be pressed with the mouse button set in "
+#~ "\"release_button\" for the pointer to be released from the capture area."
+#~ msgstr ""
+#~ "Whether the Alt key must be pressed with the mouse button set in "
+#~ "\"release_button\" for the pointer to be released from the capture area."
+
+#~ msgid ""
+#~ "Whether the Ctrl key must be pressed for the pointer to be captured while "
+#~ "it's over the capture area. If this option is set as true, and a mouse "
+#~ "button is set in the \"capture_button\" key, then the Ctrl key must be "
+#~ "pressed while the mouse button is pressed."
+#~ msgstr ""
+#~ "Whether the Ctrl key must be pressed for the pointer to be captured while "
+#~ "it's over the capture area. If this option is set as true, and a mouse "
+#~ "button is set in the \"capture_button\" key, then the Ctrl key must be "
+#~ "pressed while the mouse button is pressed."
+
+#~ msgid ""
+#~ "Whether the Ctrl key must be pressed with the mouse button set in "
+#~ "\"release_button\" for the pointer to be released from the capture area."
+#~ msgstr ""
+#~ "Whether the Ctrl key must be pressed with the mouse button set in "
+#~ "\"release_button\" for the pointer to be released from the capture area."
+
+#~ msgid ""
+#~ "Whether the Shift key must be pressed for the pointer to be captured "
+#~ "while it's over the capture area. If this option is set as true, and a "
+#~ "mouse button is set in the \"capture_button\" key, then the Shift key "
+#~ "must be pressed while the mouse button is pressed."
+#~ msgstr ""
+#~ "Whether the Shift key must be pressed for the pointer to be captured "
+#~ "while it's over the capture area. If this option is set as true, and a "
+#~ "mouse button is set in the \"capture_button\" key, then the Shift key "
+#~ "must be pressed while the mouse button is pressed."
+
+#~ msgid ""
+#~ "Whether the Shift key must be pressed with the mouse button set in "
+#~ "\"release_button\" for the pointer to be released from the capture area."
+#~ msgstr ""
+#~ "Whether the Shift key must be pressed with the mouse button set in "
+#~ "\"release_button\" for the pointer to be released from the capture area."
+
+#~ msgid "Assistive Technology Support is not Enabled"
+#~ msgstr "Assistive Technology Support নিষ্ক্ৰিয়"
+
+#~ msgid ""
+#~ "Mousetweaks requires assistive technologies to be enabled in your "
+#~ "session.\n"
+#~ "\n"
+#~ "To enable support for assistive technologies and restart your session, "
+#~ "press \"Enable and Log Out\"."
+#~ msgstr ""
+#~ "Mousetweaks ক assistive technologies ৰ সক্ৰিয় হোৱাৰ প্ৰয়োজন ।\n"
+#~ "\n"
+#~ "assistive technologies ৰ সমৰ্থন সক্ৰিয় কৰিবলৈ আৰু অধইবেশন পুনৰাৰম্ভ কৰিবলৈ, "
+#~ "\"Enable and Log Out\" টিপক ।"
+
+#~ msgid "Dwell mode to use"
+#~ msgstr "ব্যৱহাৰৰ বাবে Dwell মোড"
+
+#~ msgid "Window x position"
+#~ msgstr "Window x position"
+
+#~ msgid "Window y position"
+#~ msgstr "Window y position"
+
+#~ msgid "Show elapsed time as cursor overlay"
+#~ msgstr "ব্যস্ত হিসাবে সময় প্ৰদৰ্শন কৰা হ'ব"
+
+#~ msgid "Enable and Log Out"
+#~ msgstr "সক্ৰিয় কৰে লগ-আউট কৰক"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid "Failed to Launch Mouse Preferences"
+#~ msgstr "মাউছ সম্পৰ্কিত পছন্দ"
