@@ -1,0 +1,12 @@
+[Desktop Entry]
+
+Type=Application
+Encoding=UTF-8
+Name=Mousetweaks
+Comment=Mousetweaks
+Exec=/usr/bin/mousetweaks-gui.sh
+Icon=/usr/share/mousetweaks/double-click.png
+Terminal=false
+Type=Application
+Categories=GNOME;Application;Accessibility;
+StartupNotify=true
