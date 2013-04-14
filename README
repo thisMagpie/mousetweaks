@@ -40,3 +40,9 @@ License:
     This program is released under the terms of the GNU General Public
     License. Please see the file COPYING for details.
 
+Dependencies:
+
+intltool
+gnome-common
+pkg-config
+gnome-doc-utils
