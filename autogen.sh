@@ -11,7 +11,7 @@ PKG_NAME="mousetweaks"
     exit 1
 }
 
-# create marco directory
+# create macro directory
 if test ! -d $srcdir/m4; then
     mkdir $srcdir/m4
 fi

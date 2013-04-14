@@ -1,5 +1,14 @@
 /*
- * Copyright © 2007-2010 Gerd Kohlberger <gerdko gmail com>
+ * Copyright © 2007-2010 Gerd Kohlberger <gerdko gmail com> 
+ *
+=========================================================================================
+ 	Some changes have been made to this copy by Magdalen Berns 2013 <magdalenberns "" "" > 
+  	(The original version of Mousetweaks can be found in the gnome repo)
+==========================================================================================
+ *
+ *	Functions: TODO List functions and briefly describe what they do. 
+ *
+ *	static void mt_main_generate_motion_event
  *
  * This file is part of Mousetweaks.
  *
@@ -16,7 +25,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+ 
+/*
+	Libraries to include
+*/
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -80,8 +92,7 @@ typedef struct _MtData
     guint        ssc_finished          : 1;
 } MtData;
 
-static void
-mt_main_generate_motion_event (GdkScreen *screen, gint x, gint y)
+static void mt_main_generate_motion_event (GdkScreen *screen, gint x, gint y)
 {
     GdkDevice *cp;
 
@@ -90,11 +101,7 @@ mt_main_generate_motion_event (GdkScreen *screen, gint x, gint y)
         gdk_device_warp (cp, screen, x, y);
 }
 
-static void
-mt_main_generate_button_event (MtData *mt,
-                               guint   button,
-                               gint    type,
-                               gulong  delay)
+static void mt_main_generate_button_event (MtData *mt, guint button, gint type, gulong delay)
 {
     Display *dpy;
 
@@ -125,8 +132,7 @@ mt_main_generate_button_event (MtData *mt,
     mt_common_xtrap_pop ();
 }
 
-static void
-mt_main_set_cursor (MtData *mt, GdkCursorType type)
+static void mt_main_set_cursor (MtData *mt, GdkCursorType type)
 {
     GdkDisplay *gdk_dpy;
     GdkScreen *screen;
@@ -314,9 +320,7 @@ dwell_start_gesture (MtData *mt)
     mt_timer_start (mt->dwell_timer);
 }
 
-static void
-dwell_stop_gesture (MtData *mt)
-{
+static void dwell_stop_gesture (MtData *mt){
     GdkDevice *cp;
 
     if (mt->override_cursor)
@@ -334,14 +338,16 @@ dwell_stop_gesture (MtData *mt)
     mt_timer_stop (mt->dwell_timer);
 }
 
-static void
-dwell_timer_finished (MtTimer *timer, MtData *mt)
+static void dwell_timer_finished (MtTimer *timer, MtData *mt)
 {
     MtSettings *ms;
 
     ms = mt_settings_get_default ();
     mt_cursor_manager_restore_all (mt_cursor_manager_get_default ());
 
+	/*	
+		If dwell is selected then open a gui window? TODO check if this is the case 
+	*/
     if (ms->dwell_mode == G_DESKTOP_MOUSE_DWELL_MODE_WINDOW)
     {
         mt_main_do_dwell_click (mt);
@@ -357,7 +363,9 @@ dwell_timer_finished (MtTimer *timer, MtData *mt)
         }
         else if (mt->dwell_drag_started)
         {
-            /* if a drag action is in progress stop it */
+            /* 
+            if a drag action is in progress stop it
+             */
             mt_main_do_dwell_click (mt);
         }
         else
@@ -401,10 +409,12 @@ mt_dwell_click_cancel (MtData *mt)
     mt_service_set_click_type (mt->service, MT_DWELL_CLICK_TYPE_SINGLE);
 }
 
-static void
-global_motion_event (MtListener *listener,
-                     MtEvent    *event,
-                     MtData     *mt)
+/*Arguments:
+ 		MtListener 
+ 		MtEvent 
+ 		MtData 
+ */
+static void global_motion_event(MtListener *listener, MtEvent *event, MtData *mt)
 {
     MtSettings *ms;
 
@@ -460,7 +470,7 @@ global_button_event (MtListener *listener,
     /*
      * cancel a dwell-click in progress if a physical button
      * is pressed - useful for mixed use-cases and testing
-     */
+    */
     if ((event->type == MT_EVENT_BUTTON_PRESS && mt_timer_is_running (mt->dwell_timer)) ||
         (event->type == MT_EVENT_BUTTON_RELEASE && mt->dwell_drag_started))
     {
@@ -468,12 +478,7 @@ global_button_event (MtListener *listener,
     }
 }
 
-static void
-cursor_overlay_time (guchar *image,
-                     gint    width,
-                     gint    height,
-                     gdouble target,
-                     gdouble elapsed)
+static void cursor_overlay_time (guchar *image, gint    width, gint    height,  gdouble target, gdouble elapsed)
 {
     GdkColor color;
     GtkStyle *style;
@@ -516,7 +521,9 @@ mt_main_timer_tick (MtTimer *timer, gdouble elapsed, gpointer data)
         gdouble target;
         guchar *image;
 
-        /* get cursor info */
+        /* 
+        	get cursor info
+        */
         name = mt_cursor_get_name (current_cursor);
         image = mt_cursor_get_image_copy (current_cursor);
         mt_cursor_get_dimension (current_cursor, &width, &height);
@@ -526,10 +533,15 @@ mt_main_timer_tick (MtTimer *timer, gdouble elapsed, gpointer data)
 
         target = mt_timer_get_target (timer);
 
-        /* paint overlay */
+        /*
+       		 paint overlay 
+        */
         cursor_overlay_time (image, width, height, target, elapsed);
 
-        /* create and set new cursor */
+        /* 
+        	create and set new cursor 
+        	 
+        */
         new_cursor = mt_cursor_new (name, image, width, height, xhot, yhot);
         if (new_cursor)
         {
@@ -539,14 +551,14 @@ mt_main_timer_tick (MtTimer *timer, gdouble elapsed, gpointer data)
     }
 }
 
-static void
-mt_main_cursor_changed (MtCursorManager *manager,
-                        const gchar     *name,
-                        MtData          *mt)
+
+static void mt_main_cursor_changed (MtCursorManager *manager, const gchar *name, MtData *mt)
 {
     if (!mt->dwell_gesture_started)
     {
-        /* Remove me, I'm weird */
+        /* 
+       		 Remove me, I'm weird ?
+        */
         mt->override_cursor = !g_str_equal (name, "left_ptr");
     }
 }
@@ -583,7 +595,9 @@ mt_data_init (void)
         return NULL;
     }
 
-    /* continue sending event requests inspite of other grabs */
+    /* 
+    	continue sending event requests inspite of other grabs 
+    */
     XTestGrabControl (dpy, True);
 
     mt->ssc_timer = mt_timer_new ();
@@ -618,6 +632,10 @@ mt_parse_options (int *argc, char ***argv)
     MtCliArgs ca;
     GError *error = NULL;
     GOptionContext *context;
+    
+    /*
+    	Create an array to store the list of options 
+    */
     GOptionEntry entries[] =
     {
         {"dwell", 0, 0, G_OPTION_ARG_NONE, &ca.dwell_enabled,
@@ -645,7 +663,9 @@ mt_parse_options (int *argc, char ***argv)
         { NULL }
     };
 
-    /* init cli arguments */
+    /* 
+    	init cli arguments 
+    */
     ca.ssc_time      = -1.;
     ca.dwell_time    = -1.;
     ca.mode          = NULL;
@@ -658,7 +678,9 @@ mt_parse_options (int *argc, char ***argv)
     ca.ctw           = FALSE;
     ca.login         = FALSE;
 
-    /* parse */
+    /* 
+    	parse 
+    */
     context = g_option_context_new (_("- GNOME mouse accessibility daemon"));
     g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
     g_option_context_add_group (context, gtk_get_option_group (TRUE));
@@ -716,10 +738,14 @@ mt_main (int argc, char **argv, MtCliArgs cli_args)
     if (!mt)
         goto FINISH;
 
-    /* load settings */
+    /* 
+    	load settings 
+    */
     ms = mt_settings_get_default ();
 
-    /* bind timers */
+    /* 
+    	bind timers 
+    */
     g_settings_bind (ms->a11y_settings, KEY_SSC_TIME,
                      mt->ssc_timer, "target-time",
                      G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_NO_SENSITIVITY);
@@ -792,8 +818,7 @@ FINISH:
     mt_pidfile_remove ();
 }
 
-int
-main (int argc, char **argv)
+int main (int argc, char **argv)
 {
     MtCliArgs cli_args;
     pid_t pid;
